@@ -1,0 +1,23 @@
+.tree { padding:10px 0; font-size:7pt; }
+.tree .box { border-collapse: collapse; margin:0; padding:0; border:2px solid #999; background:#eee; }
+.tree .box td { text-align:center; padding:3px !important; }
+.tree th { text-align:center; margin:0; padding:0; }
+.tree td { font-family:verdana,Arial, Helvetica, sans-serif; padding:0 3px; }
+.tree .line-top {border-top:1px solid #999; }
+.tree .line-right { border-right:1px solid #999; }
+.tree .line-bottom { border-bottom:1px solid #999; }
+.tree .line-left { border-left:1px solid #999; }
+
+.tree .mid { font-weight:bold; color:#900; font-size:7pt; }
+.tree .mid a { font-weight:bold; color:#a00; font-size:7pt; }
+.tree .data { font-weight:normal; color:#222; font-size:7pt; }
+.tree .node { font-weight:bold; color:#036; font-size:7pt; }
+.tree .up-next a { padding:5px 0; color:#aaa; font-weight:bold; text-decoration:none; }
+.tree .up-next a:hover { color:#aaa; text-decoration:none; }
+
+.tree a.bLink { color:#036; font-weight:bold; text-decoration:none; }
+.tree a.bLink:hover { color:#e6f1fd; text-decoration:underline; }
+.tree a.cloneLink { color:#fc0; font-weight:bold; text-decoration:none; }
+.tree a.cloneLink:hover { color:#fc0; text-decoration:underline; }
+.tree a.nextLink { color:#d00; font-weight:bold; text-decoration:none; }
+.tree a.nextLink:hover { color:#d00; text-decoration:underline; }
