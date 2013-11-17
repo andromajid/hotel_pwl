@@ -78,7 +78,7 @@ class LoginForm extends CFormModel {
             return false;
     }
     public function checkCaptcha($attribute, $params) {
-        if($this->captcha !== $_SESSION['site_captcha']) {
+        if($this->captcha !== $_SESSION['captcha_admin']) {
             $this->addError('captcha', 'Kode Unik yang anda inputkan salah.');
         }
     }

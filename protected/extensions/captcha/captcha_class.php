@@ -6,6 +6,7 @@ class captcha_class {
     var $RandomStr = '';
 
     public function __construct() {
+        
         if (session_id() == '') {
             session_start();
         }
@@ -37,7 +38,6 @@ class captcha_class {
 
 
         $_SESSION[$captcha_session_name] = $ResultStr; // carry the data through session
-
 
         header("Content-type: image/jpeg"); // out out the image 
 

@@ -3,24 +3,6 @@
 class SiteController extends Controller {
 
     /**
-     * Declares class-based actions.
-     */
-    public function actions() {
-        return array(
-            // captcha action renders the CAPTCHA image displayed on the contact page
-            'captcha' => array(
-                'class' => 'CCaptchaAction',
-                'backColor' => 0xFFFFFF,
-            ),
-            // page action renders "static" pages stored under 'protected/views/site/pages'
-            // They can be accessed via: index.php?r=site/page&view=FileName
-            'page' => array(
-                'class' => 'CViewAction',
-            ),
-        );
-    }
-
-    /**
      * This is the default 'index' action that is invoked
      * when an action is not explicitly requested by users.
      */
@@ -74,12 +56,6 @@ class SiteController extends Controller {
         $this->layout = '//layouts/admin_login';
         $model = new LoginForm;
 
-//		// if it is ajax validation request
-//		if(isset($_POST['ajax']) && $_POST['ajax']==='login-form')
-//		{
-//			echo CActiveForm::validate($model);
-//			Yii::app()->end();
-//		}
         // collect user input data
         if (isset($_POST['LoginForm'])) {
             $model->attributes = $_POST['LoginForm'];
@@ -99,11 +75,15 @@ class SiteController extends Controller {
         $admin->logout();
         $this->redirect(Yii::app()->homeUrl);
     }
+
     /**
      * controller buat generate captcha
      */
-    public function actionCaptcha($session_name = 'captcha_admin') {
-         foreach (Yii::app()->log->routes as $route) {
+    public function actionCaptcha($session_name = null) {
+        if($session_name == null) {
+            $session_name = 'captcha_admin';
+        }
+        foreach (Yii::app()->log->routes as $route) {
             if ($route instanceof CWebLogRoute) {
                 $route->enabled = false;
             }
@@ -111,6 +91,6 @@ class SiteController extends Controller {
         yii::import('ext.captcha.captcha_class');
         $capthaOBJ = new captcha_class();
         $capthaOBJ->OutputCaptcha($width = 100, $height = 30, $length = 4, $session_name); // can be call also $capthaOBJ->OutputCaptcha(100,30,6) // param width, height, length respectively
-        
     }
+
 }

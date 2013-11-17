@@ -55,11 +55,6 @@ $('.search-form form').submit(function(){
                     'header' => 'Action',
                     'class' => 'CButtonColumn',
                     'template' => '{view}{update}{delete}',
-                    'buttons'=>array(
-                        'delete'=>array(
-                            'visible'=>'($data->page_is_delete==1)?1:0',
-                        )
-                    )
                 ),
             ),
         ));
