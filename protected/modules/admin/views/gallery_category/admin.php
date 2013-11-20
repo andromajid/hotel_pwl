@@ -28,72 +28,60 @@ $('.search-form form').submit(function(){
 <div class="flat_area grid_16">
     <h2>List of Gallery Category</h2>
 </div>
-<div class="box grid_16 round_all">
-    <h2 class="box_head grad_colour round_all">Advanced Search</h2>
-    <a href="#" class="grabber">&nbsp;</a>
-    <a href="#" class="toggle toggle_closed">&nbsp;</a>
-    <div class="toggle_container" style="display:none;">
-        <?php
-        $this->renderPartial('_search', array(
-            'model' => $model,
-        ));
-        ?>
-    </div>
-</div>
 <?php
-$this->widget('zii.widgets.grid.CGridView', array(
-    'id' => 'site-gallery-grid',
-    'dataProvider' => $model->search(),
-    'filter' => $model,
-    'columns' => array(
-        array(
-            'header' => 'No.',
-            'value' => '$this->grid->dataProvider->pagination->currentPage * $this->grid->dataProvider->pagination->pageSize + ($row+1)."."',
-            'htmlOptions' => array('style' => 'text-align:center;'),
-        ),
-      
-        array(
-            'name' => 'gallery_category_title',
-            'value' => '$data->gallery_category_title',
-        ),
-        
-        array(
-            'name' => 'gallery_category_is_active',
-            'type' => 'image',
-            'value' => '($data->gallery_category_is_active == 1 ? Yii::app()->request->baseUrl . "/images/icon/b_ok.png" : Yii::app()->request->baseUrl . "/images/icon/b_notok.png")',
-            'filter' => CHtml::activeDropDownList($model, 'gallery_category_is_active', array('' => '', '1' => 'Active', '0' => 'InActive')),
-            'htmlOptions' => array('style' => 'text-align:center;'),
-        ),
-        array(
-            'header' => 'Action',
-            'class' => 'CButtonColumn',
-            'template' => '{view}{update}{delete}',
-            'buttons' => array(
-                'view' => array(
-                    'imageUrl' => Yii::app()->request->baseUrl . '/images/icon/adm_detail_navy.png',
-                ),
-                'update' => array(
-                    'imageUrl' => Yii::app()->request->baseUrl . '/images/icon/adm_edit_navy.png',
-                    'visible' => $this->action_update,
-                ),
-                'delete' => array(
-                    'imageUrl' => Yii::app()->request->baseUrl . '/images/icon/adm_delete_navy.png',
-                    'visible' => $this->action_delete,
-                ),
-            ),
-        ),
-    ),
-    'selectableRows' => 2,
-    
-    'pager' => array(
-        'cssFile' => Yii::app()->params['backendUrl'] . '/css/style-pager.css',
-        'header' => '',
-        'firstPageLabel' => 'First',
-        'prevPageLabel' => 'Previous',
-        'nextPageLabel' => 'Next',
-        'lastPageLabel' => 'Last',
-    ),
-    'cssFile' => Yii::app()->params['backendUrl'] . '/css/style-gridview.css',
-    'loadingCssClass' => '',
-));
-?>
+//$this->widget('zii.widgets.grid.CGridView', array(
+//    'id' => 'site-gallery-grid',
+//    'dataProvider' => $model->search(),
+//    'filter' => $model,
+//    'columns' => array(
+//        array(
+//            'header' => 'No.',
+//            'value' => '$this->grid->dataProvider->pagination->currentPage * $this->grid->dataProvider->pagination->pageSize + ($row+1)."."',
+//            'htmlOptions' => array('style' => 'text-align:center;'),
+//        ),
+//      
+//        array(
+//            'name' => 'gallery_category_title',
+//            'value' => '$data->gallery_category_title',
+//        ),
+//        
+//        array(
+//            'name' => 'gallery_category_is_active',
+//            'type' => 'image',
+//            'value' => '($data->gallery_category_is_active == 1 ? Yii::app()->request->baseUrl . "/images/icon/b_ok.png" : Yii::app()->request->baseUrl . "/images/icon/b_notok.png")',
+//            'filter' => CHtml::activeDropDownList($model, 'gallery_category_is_active', array('' => '', '1' => 'Active', '0' => 'InActive')),
+//            'htmlOptions' => array('style' => 'text-align:center;'),
+//        ),
+//        array(
+//            'header' => 'Action',
+//            'class' => 'CButtonColumn',
+//            'template' => '{view}{update}{delete}',
+//            'buttons' => array(
+//                'view' => array(
+//                    'imageUrl' => Yii::app()->request->baseUrl . '/images/icon/adm_detail_navy.png',
+//                ),
+//                'update' => array(
+//                    'imageUrl' => Yii::app()->request->baseUrl . '/images/icon/adm_edit_navy.png',
+//                    'visible' => $this->action_update,
+//                ),
+//                'delete' => array(
+//                    'imageUrl' => Yii::app()->request->baseUrl . '/images/icon/adm_delete_navy.png',
+//                    'visible' => $this->action_delete,
+//                ),
+//            ),
+//        ),
+//    ),
+//    'selectableRows' => 2,
+//    
+//    'pager' => array(
+//        'cssFile' => Yii::app()->params['backendUrl'] . '/css/style-pager.css',
+//        'header' => '',
+//        'firstPageLabel' => 'First',
+//        'prevPageLabel' => 'Previous',
+//        'nextPageLabel' => 'Next',
+//        'lastPageLabel' => 'Last',
+//    ),
+//    'cssFile' => Yii::app()->params['backendUrl'] . '/css/style-gridview.css',
+//    'loadingCssClass' => '',
+//));
+//?>

@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html class="no-js">
-    <?php 
-        $baseUrl = Yii::app()->theme->baseUrl;
+    <?php
+    $baseUrl = Yii::app()->theme->baseUrl;
     ?>
     <head>
-        
-        <script src="<?php echo $baseUrl; ?>/js/bootstrap.min.js"></script>
-        <script src="<?php echo $baseUrl; ?>/js/bootbox.js"></script>
-        <script src="<?php echo $baseUrl; ?>/assets/scripts.js"></script>
+
+
         <title><?php echo isset($this->title) ? $this->title : 'admin home page'; ?></title>
-        <!-- Bootstrap -->
         <?php
         $baseUrl = Yii::app()->theme->baseUrl;
 
         $cs = Yii::app()->getClientScript();
         Yii::app()->clientScript->registerCoreScript('jquery');
         ?>
+
+
         <link href="<?php echo $baseUrl; ?>/css/bootstrap.min.css" rel="stylesheet" media="screen">
         <link href="<?php echo $baseUrl; ?>/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
         <link href="<?php echo $baseUrl; ?>/assets/template.css" rel="stylesheet" media="screen">
@@ -49,6 +48,10 @@
                 <p>&copy; Andro Majid 2013</p>
             </footer>
         </div>
+        <!-- Bootstrap -->
+        <script src="<?php echo $baseUrl; ?>/js/bootstrap.min.js"></script>
+        <script src="<?php echo $baseUrl; ?>/js/bootbox.js"></script>
+        <script src="<?php echo $baseUrl; ?>/assets/scripts.js"></script>
         <!--/.fluid-container-->
     </body>
 

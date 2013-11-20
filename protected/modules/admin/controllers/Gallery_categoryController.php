@@ -1,6 +1,6 @@
 <?php
 
-class Gallery_categoryController extends AdminController
+class Gallery_categoryController extends adminController
 {
 	
     
