@@ -47,6 +47,7 @@ $('.search-form form').submit(function(){
                 array(
                     'name' => 'page_is_active',
                     'type' => 'raw',
+//                    'value' => '($data->page_is_active == 1 ? CHtml::tag("span", array("class" => "badge badge-success"), "√") :CHtml::tag("span", array("class" => "badge badge-important"), "x"))',
                     'value' => '($data->page_is_active == 1 ? CHtml::tag("span", array("class" => "badge badge-success"), "√") :CHtml::tag("span", array("class" => "badge badge-important"), "x"))',
                     'filter' => CHtml::activeDropDownList($model, 'page_is_active', array('' => '', '1' => 'Active', '0' => 'InActive')),
                     'htmlOptions' => array('style' => 'text-align:center;'),

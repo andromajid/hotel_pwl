@@ -134,7 +134,7 @@ class Gallery_categoryController extends adminController
 	 */
 	public function actionList()
 	{
-		$model=new SiteGalleryCategory('search');
+		$model= new SiteGalleryCategory('search');
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['SiteGalleryCategory']))
 			$model->attributes=$_GET['SiteGalleryCategory'];

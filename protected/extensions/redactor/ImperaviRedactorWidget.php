@@ -103,10 +103,10 @@ class ImperaviRedactorWidget extends CInputWidget {
                     }
                 },
                 getFileCallback: function(file) {
-                    console.log($.redactor);
-                    image = '<img src=\"'+file+'\">';
+                    console.log(file);
+                    image = '<img src=\"'+file.url+'\">';
                    // RedactorPlugins.insertHtml(image);
-                  obj.insertHtml('<img src=\"'+file+'\">');
+                  obj.insertHtml('<img src=\"'+file.url+'\">');
                   // console.log(dialog.url);
                 } // pass callback to file manager
             });

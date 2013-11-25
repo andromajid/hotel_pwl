@@ -31,7 +31,7 @@ RedactorPlugins.elfinder = {
                     }
                 },
                 getFileCallback: function(file) {
-                    //console.log(file);
+//                    console.log(file);
                     image = '<img src="'+file+'">';
                    // RedactorPlugins.insertHtml(image);
                   el.insertHtml('<img src="'+file+'">');

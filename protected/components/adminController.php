@@ -19,6 +19,7 @@ class adminController extends CController {
     public $action_activate = 0;
     public $action_process = 0;
     public $action_report = 0;
+    public $layout = '//layouts/column2';
     /**
      * authentifikasi di sini
      */

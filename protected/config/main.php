@@ -8,7 +8,7 @@ $_CONFIG=array();
 $_CONFIG['app']['base_url']             = 'http://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['SCRIPT_NAME']);
 return array(
     'basePath' => dirname(__FILE__) . DIRECTORY_SEPARATOR . '..',
-    'name' => 'hokkydjoen',
+    'name' => 'Hotel PWL',
     // preloading 'log' component
     'preload' => array('log'),
     'language' => 'id',
@@ -16,8 +16,6 @@ return array(
     'import' => array(
         'application.models.*',
         'application.components.*',
-        'application.helper.*',
-        'application.extensions.mlm.MlmHelper',
     ),
     'modules' => array(
         // uncomment the following to enable the Gii tool
@@ -131,5 +129,5 @@ return array(
         ),
         
     ),
-        'theme' => 'front',
+        'theme' => 'modern-business',
 );
