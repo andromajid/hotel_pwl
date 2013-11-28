@@ -16,6 +16,7 @@ return array(
     'import' => array(
         'application.models.*',
         'application.components.*',
+        'application.helper.*'
     ),
     'modules' => array(
         // uncomment the following to enable the Gii tool
@@ -88,7 +89,7 @@ return array(
         ),
         // uncomment the following to use a MySQL database
         'db' => array(
-            'connectionString' => 'mysql:host=localhost;dbname=hotel',
+            'connectionString' => 'mysql:host=localhost;dbname=hotel_pwl',
             'emulatePrepare' => true,
             'enableProfiling' => true,
             'enableParamLogging' => true,
