@@ -105,6 +105,11 @@ class Hotel_roomController extends adminController {
     public function actionDelete_image($id) {
         $data = HotelRoomImage::model()->find('hotel_room_image_id = :id', array(':id' => $id));
         $data->delete();
+        //unlink this fucker
+        $path = Yii::getPathOfAlias('webroot').DIRECTORY_SEPARATOR.'files'.DIRECTORY_SEPARATOR.'images'.DIRECTORY_SEPARATOR.$data->hotel_room_image;
+        if(file_exists($path)) {
+            unlink($path);
+        }
         // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
         if (!isset($_GET['ajax']))
             $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
