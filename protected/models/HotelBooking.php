@@ -44,7 +44,7 @@ class HotelBooking extends CActiveRecord {
             array('hotel_boking_start_date, hotel_boking_end_date', 'safe'),
             // The following rule is used by search().
             // Please remove those attributes that should not be searched.
-            array('hotel_booking_id, hotel_boking_start_date, hotel_booking_notes, hotel_boking_end_date, hotel_boking_name, hotel_boking_phone, hotel_boking_email, hotel_booking_hotel_room_id', 'safe', 'on' => 'search'),
+            array('hotel_booking_id, hotel_boking_start_date, hotel_booking_notes, hotel_boking_end_date, hotel_boking_name, hotel_boking_phone, hotel_boking_email, hotel_booking_hotel_room_id, hotel_booking_is_checked', 'safe', 'on' => 'search'),
         );
     }
 
@@ -55,6 +55,7 @@ class HotelBooking extends CActiveRecord {
         // NOTE: you may need to adjust the relation name and the related
         // class name for the relations automatically generated below.
         return array(
+            'HotelBookingRoom' => array(self::BELONGS_TO, 'HotelRoom', 'hotel_booking_hotel_room_id'),
         );
     }
 
@@ -69,8 +70,9 @@ class HotelBooking extends CActiveRecord {
             'hotel_boking_name' => 'Name',
             'hotel_boking_phone' => 'Phone Number',
             'hotel_boking_email' => 'Email',
-            'hotel_booking_hotel_room_id' => 'Hotel Booking Hotel Room',
+            'hotel_booking_hotel_room_id' => 'Hotel Room',
             'hotel_booking_notes' => 'notes',
+            'hotel_booking_is_checked' => 'checked'
         );
     }
 
@@ -91,7 +93,7 @@ class HotelBooking extends CActiveRecord {
         $criteria->compare('hotel_boking_phone', $this->hotel_boking_phone, true);
         $criteria->compare('hotel_boking_email', $this->hotel_boking_email, true);
         $criteria->compare('hotel_booking_hotel_room_id', $this->hotel_booking_hotel_room_id);
-
+        $criteria->compare('hotel_booking_is_checked', $this->hotel_booking_is_checked, true);
         return new CActiveDataProvider($this, array(
             'criteria' => $criteria,
         ));

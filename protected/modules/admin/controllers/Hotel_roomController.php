@@ -72,6 +72,8 @@ class Hotel_roomController extends adminController {
                 //gather the 
                 $model->hotel_room_facility = $this->gatherFacility();
                 $model->save(false);
+                Yii::import('application.helper.FileHelper');
+                $file_id = FileHelper::massUpload($_FILES, 'hotel_room_image', $model->hotel_room_id);
                 $this->redirect(array('view', 'id' => $model->hotel_room_id));
             }
         }

@@ -27,6 +27,13 @@ $this->menu=array(
 		'hotel_boking_name',
 		'hotel_boking_phone',
 		'hotel_boking_email',
-		'hotel_booking_hotel_room_id',
+                array(
+                    'name' => 'Room',
+                    'value' => $model->HotelBookingRoom->hotel_room_name
+                ),
+                array(
+                    'value' => $model->hotel_booking_is_checked == 0?'unchecked':'checked',
+                    'name' => 'hotel_booking_is_checked'
+                ),
 	),
 )); ?>
