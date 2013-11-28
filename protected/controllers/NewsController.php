@@ -2,18 +2,18 @@
 
 class NewsController extends Controller {
     
-    public function actionIndex() {
+    public function actionList() {
         $news_criteria = new CDbCriteria;
         $news_criteria->condition = "news_is_active = '1'";
         $news_criteria->order = "news_input_datetime DESC";
-
-        $news_pagination = new CPagination(site_news::model()->count($news_criteria));
-        $news_pagination->pageSize = Yii::app()->params['newsPerPage'];
+        $count = site_news::model()->count($news_criteria);
+        $news_pagination = new CPagination($count);
+        $news_pagination->pageSize = 2;
         $news_pagination->applyLimit($news_criteria);
 
         $news_model = site_news::model()->findAll($news_criteria);
 
-        $this->render('index', array('news_model' => $news_model, 'news_pagination' => $news_pagination));
+        $this->render('index', array('news_model' => $news_model, 'news_pagination' => $news_pagination, 'count' => $count));
     }
 
     public function actionDetail() {

@@ -16,7 +16,7 @@ return array(
     'import' => array(
         'application.models.*',
         'application.components.*',
-        'application.helper.*'
+        'application.helper.*',
     ),
     'modules' => array(
         // uncomment the following to enable the Gii tool
@@ -79,12 +79,18 @@ return array(
             'rules' => array(
                 //'login' => 'site/login',
                 'login' => 'site/login',
-                '<module:\w+>/<controller:\w+>/<action:\w+>/*' => '<module>/<controller>/<action>',
+                
+                
+               //'<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
+                
+               // '<controller:\w+>/<action:\w+>/*' => '<controller>/<action>',
+               //'<module:\w+>/<controller:\w+>/<action:\w+>/*' => '<module>/<controller>/<action>',
                 '<module:\w+>/<controller:\w+>/<action:\w+>' => '<module>/<controller>/<action>',
-                //'<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
-                '<controller:\w+>/<action:\w+>/*' => '<controller>/<action>',
-                //'<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
-                '<controller:\w+>/<action:\w+>/*' => '<controller>/<action>',
+                
+                '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
+//                '<controller:\w+>/<id:\d+>' => '<controller>/view',
+//                 '<controller:\w+>/<id:\d+>' => '<controller>/view',
+               //'<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
             ),
         ),
         // uncomment the following to use a MySQL database

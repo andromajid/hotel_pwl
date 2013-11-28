@@ -1,22 +1,19 @@
 <?php if ($page_model !== null): ?>
-           
+    <div class="row">
 
-<div class="single_left">
-									<h2><?php echo ucfirst($page_model->page_title); ?></h2>
-					<div class="row last-row">
-								<div class="post">
-									<div id="article" style="text-align: justify;">	
+        <div class="col-lg-12">
+            <h1 class="page-header"><?php echo ucfirst($page_model->page_title); ?></h1>
+        </div>
 
-            	<p>
-                <?php
-                echo $page_model->page_content;
-                ?>
-                  </p>
-                                                                        </div>
-								</div>						
-						</div>                                                              
-                   
-</div>
-    <!-- End Case -->
+    </div>
+    <div class="row">
+
+        <div class="col-lg-12">
+            <?php
+            echo $page_model->page_content;
+            ?>
+        </div>
+
+    </div>          
 
 <?php endif; ?>

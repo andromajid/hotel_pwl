@@ -1,18 +1,31 @@
 <h1>Berita Online</h1>
 <?php if ($news_model !== null): ?>
-    <div class="news">
-        <?php foreach ($news_model as $row_news): ?>
-            <div class="news-item">
-                <h3><a href="<?php echo Yii::app()->createAbsoluteUrl('news/detail/'.$row_news->news_id.'/'.function_lib::url_title($row_news->news_title)); ?>"><?php echo $row_news->news_title; ?></a></h3>
-                <div class="news-content"><?php echo $row_news->news_short_content; ?></div>
-                <div class="news-more"><a href="<?php echo Yii::app()->createAbsoluteUrl('news/detail/'.$row_news->news_id.'/'.function_lib::url_title($row_news->news_title)); ?>">Selengkapnya &raquo;</a></div>
+    <?php foreach ($news_model as $row_news): ?>
+<?php
+$url = $this->createUrl('news/detail', array('id' => $row_news->news_id, 'title' => function_lib::url_title($row_news->news_title)));
+?>
+        <div class="row">
+            <div class="col-md-12">
+                <h3><a href="<?php echo $url ?>"><?php echo $row_news->news_title; ?></a></h3>
+
+                <p><?php echo date('Y-M-d', strtotime($row_news->news_input_datetime)); ?></p>
+                <p><?php echo substr(strip_tags($row_news->news_content), 0, 200)?>....</p>
+                <a class="btn btn-primary" href="<?php echo $url; ?>">Read More <i class="fa fa-angle-right"></i></a>
             </div>
-        <?php endforeach; ?>
-    </div>
+
+        </div>
+    <?php endforeach; ?>
+
     <?php
-    $this->widget('application.extensions.pagination.PaginationWidget', array(
-        'CPaginationObject' => $news_pagination,
-        'PaginationHeader' => 'Daftar Berita :'
-        ));
+    $this->widget('CLinkPager', array(
+        'currentPage' => $news_pagination->getCurrentPage(),
+        'itemCount' => $count,
+        'pageSize' => 2,
+        'maxButtonCount' => 5,
+        //'nextPageLabel'=>'My text >',
+        'header' => '<div class="row text-center"><div class="col-lg-12">',
+        'footer' => '</div></div>',
+        'htmlOptions' => array('class' => 'pagination'),
+    ));
     ?>
 <?php endif; ?>

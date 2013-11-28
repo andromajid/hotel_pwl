@@ -120,4 +120,12 @@ class SiteNews extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+        
+        /**
+         * function to count all active news
+         */
+        public function countNews() {
+            $data = Yii::app()->db->createCommand()->select('COUNT(news_id) AS count')->where('news_is_active = \'1\'')->queryAll();
+            return $data;
+        }
 }

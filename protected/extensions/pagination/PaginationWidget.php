@@ -40,10 +40,10 @@ class PaginationWidget extends CLinkPager {
         $buttons = $this->createPageButtons();
         if (empty($buttons))
             return;
-        echo '<div class="pagination"><div class="pagging">';
-            echo '<div class="left"><span class="pagination-header">'.$this->header.'</span></div><div class="right">';
+        echo '<div class="row text-center"><div class="col-lg-12">';
+         
             echo CHtml::tag('ul', $this->htmlOptions, implode("", $buttons));
-            echo '</div><span class="pagination-footer">'.$this->footer.'</span>';
+            echo '<span class="pagination-footer">'.$this->footer.'</span>';
         echo '</div></div>';
     }
 
