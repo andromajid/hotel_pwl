@@ -1,8 +1,2 @@
 /framework/
-/assets
-/images
-/nbproject/private/
-/files
-!.gitignore
 
-/images_cache/
