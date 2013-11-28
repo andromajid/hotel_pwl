@@ -29,6 +29,7 @@ $this->widget('zii.widgets.jui.CJuiTabs', array(
     'tabs' => array(
         'Hotel Room' => array('content' => $this->renderPartial('_form', array('model' => $model, 'form' => $form), true), 'id' => 'tab1'),
         'Hotel Facility' => array('content' => $this->renderPartial('_multi_input', array('model' => $model), true), 'id' => 'tab2'),
+        'Room image' => array('content' => $this->renderPartial('_image_list', array('data_provider' => $data_provider), true), 'id' => 'tab3'),
     ),
     // additional javascript options for the tabs plugin
     'options' => array(

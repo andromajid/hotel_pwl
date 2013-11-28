@@ -76,8 +76,14 @@ class Hotel_roomController extends adminController {
             }
         }
 
+        $image = new HotelRoomImage;
+        //$data_provider = $image->gridList($id);
+        $image->unsetAttributes();  // clear any default values
+        if (isset($_GET['HotelRoomImage']))
+            $model->attributes = $_GET['HotelRoomImage'];
         $this->render('update', array(
             'model' => $model,
+            'data_provider' => $image
         ));
     }
 
@@ -89,6 +95,14 @@ class Hotel_roomController extends adminController {
     public function actionDelete($id) {
         $this->loadModel($id)->delete();
 
+        // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+        if (!isset($_GET['ajax']))
+            $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+    }
+
+    public function actionDelete_image($id) {
+        $data = HotelRoomImage::model()->find('hotel_room_image_id = :id', array(':id' => $id));
+        $data->delete();
         // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
         if (!isset($_GET['ajax']))
             $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));

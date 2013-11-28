@@ -11,84 +11,92 @@
  * The followings are the available model relations:
  * @property HotelRoom $hotelRoomImageHotelRoom
  */
-class HotelRoomImage extends CActiveRecord
-{
-	/**
-	 * Returns the static model of the specified AR class.
-	 * @param string $className active record class name.
-	 * @return HotelRoomImage the static model class
-	 */
-	public static function model($className=__CLASS__)
-	{
-		return parent::model($className);
-	}
+class HotelRoomImage extends CActiveRecord {
 
-	/**
-	 * @return string the associated database table name
-	 */
-	public function tableName()
-	{
-		return 'hotel_room_image';
-	}
+    /**
+     * Returns the static model of the specified AR class.
+     * @param string $className active record class name.
+     * @return HotelRoomImage the static model class
+     */
+    public static function model($className = __CLASS__) {
+        return parent::model($className);
+    }
 
-	/**
-	 * @return array validation rules for model attributes.
-	 */
-	public function rules()
-	{
-		// NOTE: you should only define rules for those attributes that
-		// will receive user inputs.
-		return array(
-			array('hotel_room_image_hotel_room_id', 'required'),
-			array('hotel_room_image_hotel_room_id', 'numerical', 'integerOnly'=>true),
-			array('hotel_room_image', 'length', 'max'=>255),
-			// The following rule is used by search().
-			// Please remove those attributes that should not be searched.
-			array('hotel_room_image_id, hotel_room_image, hotel_room_image_hotel_room_id', 'safe', 'on'=>'search'),
-		);
-	}
+    /**
+     * @return string the associated database table name
+     */
+    public function tableName() {
+        return 'hotel_room_image';
+    }
 
-	/**
-	 * @return array relational rules.
-	 */
-	public function relations()
-	{
-		// NOTE: you may need to adjust the relation name and the related
-		// class name for the relations automatically generated below.
-		return array(
-			'hotelRoomImageHotelRoom' => array(self::BELONGS_TO, 'HotelRoom', 'hotel_room_image_hotel_room_id'),
-		);
-	}
+    /**
+     * @return array validation rules for model attributes.
+     */
+    public function rules() {
+        // NOTE: you should only define rules for those attributes that
+        // will receive user inputs.
+        return array(
+            array('hotel_room_image_hotel_room_id', 'required'),
+            array('hotel_room_image_hotel_room_id', 'numerical', 'integerOnly' => true),
+            array('hotel_room_image', 'length', 'max' => 255),
+            // The following rule is used by search().
+            // Please remove those attributes that should not be searched.
+            array('hotel_room_image_id, hotel_room_image, hotel_room_image_hotel_room_id', 'safe', 'on' => 'search'),
+        );
+    }
 
-	/**
-	 * @return array customized attribute labels (name=>label)
-	 */
-	public function attributeLabels()
-	{
-		return array(
-			'hotel_room_image_id' => 'Hotel Room Image',
-			'hotel_room_image' => 'Hotel Room Image',
-			'hotel_room_image_hotel_room_id' => 'Hotel Room Image Hotel Room',
-		);
-	}
+    /**
+     * @return array relational rules.
+     */
+    public function relations() {
+        // NOTE: you may need to adjust the relation name and the related
+        // class name for the relations automatically generated below.
+        return array(
+            'hotelRoomImageHotelRoom' => array(self::BELONGS_TO, 'HotelRoom', 'hotel_room_image_hotel_room_id'),
+        );
+    }
 
-	/**
-	 * Retrieves a list of models based on the current search/filter conditions.
-	 * @return CActiveDataProvider the data provider that can return the models based on the search/filter conditions.
-	 */
-	public function search()
-	{
-		// Warning: Please modify the following code to remove attributes that
-		// should not be searched.
+    /**
+     * @return array customized attribute labels (name=>label)
+     */
+    public function attributeLabels() {
+        return array(
+            'hotel_room_image_id' => 'Hotel Room Image',
+            'hotel_room_image' => 'Hotel Room Image',
+            'hotel_room_image_hotel_room_id' => 'Hotel Room Image Hotel Room',
+        );
+    }
 
-		$criteria=new CDbCriteria;
+    /**
+     * Retrieves a list of models based on the current search/filter conditions.
+     * @return CActiveDataProvider the data provider that can return the models based on the search/filter conditions.
+     */
+    public function search() {
+        // Warning: Please modify the following code to remove attributes that
+        // should not be searched.
 
-		$criteria->compare('hotel_room_image_id',$this->hotel_room_image_id);
-		$criteria->compare('hotel_room_image',$this->hotel_room_image,true);
-		$criteria->compare('hotel_room_image_hotel_room_id',$this->hotel_room_image_hotel_room_id);
+        $criteria = new CDbCriteria;
 
-		return new CActiveDataProvider($this, array(
-			'criteria'=>$criteria,
-		));
-	}
+        $criteria->compare('hotel_room_image_id', $this->hotel_room_image_id);
+        $criteria->compare('hotel_room_image', $this->hotel_room_image, true);
+        $criteria->compare('hotel_room_image_hotel_room_id', $this->hotel_room_image_hotel_room_id);
+
+        return new CActiveDataProvider($this, array(
+            'criteria' => $criteria,
+        ));
+    }
+
+    public function gridList($id) {
+        $criteria = new CDbCriteria;
+//        $criteria->addColumnCondition(array('hotel_room_image_hotel_room_id' => $id));
+        $criteria->addCondition('hotel_room_image_hotel_room_id='.$id);
+        $criteria->compare('hotel_room_image_id', $this->hotel_room_image_id);
+        $criteria->compare('hotel_room_image', $this->hotel_room_image, true);
+        $criteria->compare('hotel_room_image_hotel_room_id', $this->hotel_room_image_hotel_room_id);
+
+        return new CActiveDataProvider($this, array(
+            'criteria' => $criteria,
+        ));
+    }
+
 }

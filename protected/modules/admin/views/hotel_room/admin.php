@@ -47,9 +47,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'columns'=>array(
 		'hotel_room_id',
                 'hotel_room_name',
-		'hotel_room_description',
 		'hotel_room_rate',
-		'hotel_room_facility',
 		array(
 			'class'=>'CButtonColumn',
 		),

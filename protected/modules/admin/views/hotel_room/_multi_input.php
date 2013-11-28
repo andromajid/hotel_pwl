@@ -6,6 +6,7 @@ jQuery("#add_facility").bind("click", function() {
     console.log(clone_element);
 });    
 ', CClientScript::POS_READY);
+$data_arr = array();
 if (isset($model)) {
     $data_arr = json_decode($model->hotel_room_facility, true);
 }
@@ -18,7 +19,7 @@ if (isset($model)) {
         echo CHtml::textField('add_facility[]', '', array('class' => 'span6', 'id' => 'facility'));
         ?>
     </div>
-    <?php if (isset($model)): ?>
+    <?php if (count($data_arr) > 0): ?>
         <?php foreach ($data_arr as $row): ?>
             <div class="block block_grab">
                 <?php
