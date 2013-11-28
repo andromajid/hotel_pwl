@@ -23,7 +23,7 @@ class widget_user_notification extends CWidget {
                 foreach ($project as $row) {
                     $array_project_id[] = $row['project_id'];
                 }
-                $data_return = 
+//                $data_return = 
             }
         }
         Yii::app()->db->createCommand()->from('user_notification')->rightJoin('user', $conditions);
