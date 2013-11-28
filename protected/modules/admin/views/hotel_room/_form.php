@@ -57,7 +57,7 @@
     $this->widget('zii.widgets.jui.CJuiButton', array(
         'name' => 'kirim',
         'caption' => $model->isNewRecord ? 'Create' : 'update',
-        'htmlOptions' => array('class' => 'btn-primary')));
+        'htmlOptions' => array('class' => 'btn btn-primary')));
     ?>
 
 
