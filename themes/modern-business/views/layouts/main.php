@@ -55,6 +55,7 @@ $baseUrl = Yii::app()->theme->baseUrl;
                         <li><a href="<?php echo $this->createUrl('/page/show', array('id' => 9)); ?>">Catering</a></li>
                         <li><a href="<?php echo $this->createUrl('/page/show', array('id' => 10)); ?>">restaurant</a></li>
                         <li><a href="<?php echo $this->createUrl('/page/show', array('id' => 11)); ?>">Laundry</a></li>
+                        <li><a href="<?php echo $this->createUrl('/album/category'); ?>">Gallery</a></li>
                         <li><a href="<?php echo $this->createUrl('/site/contact'); ?>">Contact Us</a></li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
