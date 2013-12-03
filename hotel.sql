@@ -3,15 +3,15 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 28, 2013 at 03:45 PM
--- Server version: 5.5.31-0ubuntu0.13.04.1-log
--- PHP Version: 5.4.9-4ubuntu2.3
+-- Generation Time: Dec 04, 2013 at 03:25 AM
+-- Server version: 5.5.32-0ubuntu0.13.04.1
+-- PHP Version: 5.4.9-4ubuntu2.2
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 --
--- Database: `hotel_pwl`
+-- Database: `hotel`
 --
 
 -- --------------------------------------------------------
@@ -28,18 +28,65 @@ CREATE TABLE IF NOT EXISTS `hotel_booking` (
   `hotel_boking_phone` varchar(63) DEFAULT NULL,
   `hotel_boking_email` varchar(255) DEFAULT NULL,
   `hotel_booking_notes` text,
-  `hotel_booking_hotel_room_id` int(11) NOT NULL,
+  `hotel_booking_hotel_room_id` int(11) DEFAULT NULL,
+  `hotel_booking_is_checked` int(2) NOT NULL DEFAULT '0',
   PRIMARY KEY (`hotel_booking_id`),
-  KEY `hotel_booking_hotel_room_id` (`hotel_booking_hotel_room_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+  KEY `hotel_booking_hotel_room_id` (`hotel_booking_hotel_room_id`),
+  KEY `hotel_booking_is_checked` (`hotel_booking_is_checked`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `hotel_booking`
+-- Table structure for table `hotel_room`
 --
 
-INSERT INTO `hotel_booking` (`hotel_booking_id`, `hotel_boking_start_date`, `hotel_boking_end_date`, `hotel_boking_name`, `hotel_boking_phone`, `hotel_boking_email`, `hotel_booking_notes`, `hotel_booking_hotel_room_id`) VALUES
-(1, '2013-11-28', '2013-11-30', 'Andro Majid', '08231313', 'andromajid@gmail.com', NULL, 0),
-(2, '2013-11-28', '2013-11-30', 'Andro Majid', '08231313', 'andromajid@gmail.com', NULL, 0);
+CREATE TABLE IF NOT EXISTS `hotel_room` (
+  `hotel_room_id` int(11) NOT NULL AUTO_INCREMENT,
+  `hotel_room_description` text,
+  `hotel_room_rate` int(11) NOT NULL DEFAULT '0',
+  `hotel_room_facility` text,
+  `hotel_room_name` varchar(2255) NOT NULL,
+  PRIMARY KEY (`hotel_room_id`),
+  KEY `hotel_room_name` (`hotel_room_name`(767))
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+
+--
+-- Dumping data for table `hotel_room`
+--
+
+INSERT INTO `hotel_room` (`hotel_room_id`, `hotel_room_description`, `hotel_room_rate`, `hotel_room_facility`, `hotel_room_name`) VALUES
+(11, '<p><table><tbody><tr><td><br><table><tbody><tr><td>Here we are again PHP fans, with your latest edition of&nbsp;<a href="http://phpweekly.com/">phpweekly.com</a>.<br><br>We start with a great special offer.&nbsp;25% off the purchase price of PHP Beyond The Web by Rob Aley, with a limited offer coupon exclusively for readers of&nbsp;<a href="http://phpweekly.com/">phpweekly.com</a>! See our Reading and Viewing section for details.<br><br>Two&nbsp;podcasts from dev/hell this week, one recorded before True&nbsp;North PHP, the other after.&nbsp;Plus the 3rd offering from the Elephant in the Room podcast team, discussing all kinds of Test Driven Development.<br><br>Happy reading.......<br><br>Cheers<br>Katie</td></tr><tr><td><h4><span>Articles</span></h4><a href="http://phpweekly.us4.list-manage.com/track/click?u=135396dd31790e834e8629b45&amp;id=c01b234ad8&amp;e=2650636000">What is Next For Symfony2?</a><br>Lukas Kahwe Smith takes a look at the popular PHP framework Symfony2. He asks the question what is next for the framework and where should the&nbsp;community&nbsp;next direct its attention?<br><br><a href="http://phpweekly.us4.list-manage.com/track/click?u=135396dd31790e834e8629b45&amp;id=0757c9a64d&amp;e=2650636000">Quicker, Easier, More Seductive: Restraining Your Service Locators</a><br>Paul M.Jones made a passing comment last week about service locators - "When it comes to Inversion of Control, a Service Locator is like the Dark Side of The Force: quicker, easier and more seductive. But it&nbsp;gets you&nbsp;into trouble later on. Go with Dependency Injection whenever you can instead." In this article he&nbsp;elaborates further.<br><br><a href="http://phpweekly.us4.list-manage.com/track/click?u=135396dd31790e834e8629b45&amp;id=b294990786&amp;e=2650636000">Contributing Advent</a><br>As a project for this year''s advent, Derek Rethans will be making an open source contribution for each day of the period. Focusing on resolving bugs in Xdebug, PHP''s DateTime extension and OpenStreetMap, he invites readers to contribute to their favourite Open Source projects. Want to get involved?<br><br><a href="http://phpweekly.us4.list-manage2.com/track/click?u=135396dd31790e834e8629b45&amp;id=8160412177&amp;e=2650636000">Are TableGateways Worth it in Zend Framework 2?</a><br>Matthew Setter asks "Are TableGateways too hard to implement in Zend Framework 2? Are they too hard to justify the effort? That''s what I was asked recently in a Twitter conversation. For me they''re not. For me they are well worth the effort". Matthew has written this post to show why they''re not and how they bring great flexibility, when implemented correctly.<br><br><a href="http://phpweekly.us4.list-manage.com/track/click?u=135396dd31790e834e8629b45&amp;id=75cef6a37a&amp;e=2650636000">The Fall of PEAR and the Rise of Composer</a><br>Ben Ramsey talks about package management in the PHP community.</td></tr><tr><td><h2>Tutorials&nbsp;and Talks</h2><div><a href="http://phpweekly.us4.list-manage.com/track/click?u=135396dd31790e834e8629b45&amp;id=814f839820&amp;e=2650636000">Using PHP Streams Effectively</a><br>In a previous article from Sitepoint several months ago, we discovered the basics of PHP streams and how powerful they are. In this tutorial we are going to learn how to use this power in the real world. First we will learn how to build custom filters and attach them to a stream, before&nbsp;packaging&nbsp;filters inside a document parser application.<br><br><a href="http://phpweekly.us4.list-manage.com/track/click?u=135396dd31790e834e8629b45&amp;id=cbba892c67&amp;e=2650636000">Find and Correct Misspelled Words with Pspell</a><br>Every site could do with a search function to indicate misspellings if no or too few results have been found. PHP''s Pspell module allows for checking the spelling of a word and suggesting a replacement from it''s default dictionary, or from a customised dictionary.<br><br><a href="http://phpweekly.us4.list-manage.com/track/click?u=135396dd31790e834e8629b45&amp;id=e2c0fafc56&amp;e=2650636000">Imagick vs GD</a><br>If you want to create a thumbnail, apply a filter to an image or transform it in any other way, you will have to employ an image processing library in your PHP application. It means that you will probably choose GD or ImageMagick. But which one supports a wider range of image formats? Maybe one of them is slower than the other? What other criteria should be taken into consideration when choosing the right library? Read this article to find out.<br><br><a href="http://phpweekly.us4.list-manage1.com/track/click?u=135396dd31790e834e8629b45&amp;id=0cf5a55142&amp;e=2650636000">Automated Testing with Selenium2 and PHPUnit</a><br>Selenium2 is a software testing framework for web applications. This tutorial focuses on automating browser testing using Selenium2.<br><br><a href="http://phpweekly.us4.list-manage1.com/track/click?u=135396dd31790e834e8629b45&amp;id=825b343e7b&amp;e=2650636000">Battle of the Autoloaders: PSR-0 vs PSR-4</a><br>If you''ve gone past the beginner stage&nbsp;in your PHP training, you''ve heard of PSR-0 - an autoloading standard that defines ways to automatically include PHP classes in your code. When Composer showed up and took the PHP package management world by storm, things changed. Due to some of its rules, folders often duplicated and became too deep when looking at PSR-0 class installations via Composer. Therefore some highly qualified PHP devs got together and put together a suggestion for a new standard: PSR-4.<br><br><a href="http://phpweekly.us4.list-manage2.com/track/click?u=135396dd31790e834e8629b45&amp;id=db53fb7903&amp;e=2650636000">Google App Engine and PHP: Getting Started</a><br>It''s been a while since Google announced PHP Support on Google App Engine. This article series will take you through all the necessary steps in getting your app up and running on GAE.&nbsp;This tutorial&nbsp;uses PhpStorm which supports GAE projects out of the box, but you can use any IDE of your choice.<br><br><a href="http://phpweekly.us4.list-manage.com/track/click?u=135396dd31790e834e8629b45&amp;id=96c3f5b093&amp;e=2650636000">Beyond Clean Code</a><br>This is the 4th post in Anthony Ferrara''s "Beyond" series. The three previous posts focused on reimagining OOP and questioning some of the core beliefs that we have come to take for granted. This one is slightly different, in that he talks about another angle of writing code: the process itself. People always talk about how code should be clean, but how do you write clean code?<br><br><a href="http://phpweekly.us4.list-manage.com/track/click?u=135396dd31790e834e8629b45&amp;id=d78e12cd28&amp;e=2650636000">Deploying a Laravel Application Using Capistrano</a><br>So you''ve just built a fancy web application and you''re planning to put it online. This can be done in many ways. This article covers one approach to deploy your backend system to your production server. It will go through the following steps through the example of a Laravel application, but this can be applied to any other language or technology.<br><br><a href="http://phpweekly.us4.list-manage.com/track/click?u=135396dd31790e834e8629b45&amp;id=18ee6d1be1&amp;e=2650636000">The Repository Design Pattern</a><br>The Repository Design Pattern is one of the most useful and widely applicable design patterns ever invented. Any application has to work with persistence and with some kind of list of items. The problem that all of these list management logics have in common is how to connect business logic, factories and persistence.</div></td></tr><tr><td>News and Announcements<br><br><a href="http://phpweekly.us4.list-manage.com/track/click?u=135396dd31790e834e8629b45&amp;id=fcdb1bb9d8&amp;e=2650636000">WordPress 3.8 Beta 1</a><br>The first Beta of the 3.8 is now available. The next dates to watch out for are code freeze on<span>December 5th</span>&nbsp;and a final release on&nbsp;<span>December 12th</span>.<br><br><a href="http://phpweekly.us4.list-manage.com/track/click?u=135396dd31790e834e8629b45&amp;id=658c94b135&amp;e=2650636000">Joomla!&nbsp;<span>2.5.16</span>&nbsp;Released</a><br>The Joomla Project is pleased to announce the immediate availability of Joomla&nbsp;<span>2.5.16</span>.<br><br><a href="http://phpweekly.us4.list-manage1.com/track/click?u=135396dd31790e834e8629b45&amp;id=03ee185971&amp;e=2650636000">Drupal 7.24 and 6.29 Released</a><br>Drupal 7.24 and Drupal 6.29, maintenance releases which contain fixes for security vulnerabilities, are now available for download.<br><br><a href="http://phpweekly.us4.list-manage1.com/track/click?u=135396dd31790e834e8629b45&amp;id=3af95dc046&amp;e=2650636000">php.net Modern Web Theme Goes Live!</a><br>The PHP web team are delighted to announce the launch of the new web theme that has been in beta for many months.</td></tr><tr><td><h2><a href="http://phpweekly.us4.list-manage.com/track/click?u=135396dd31790e834e8629b45&amp;id=0529a94501&amp;e=2650636000">Reading and Viewing</a></h2><a href="http://phpweekly.us4.list-manage.com/track/click?u=135396dd31790e834e8629b45&amp;id=da4c518818&amp;e=2650636000">PHP Beyond The Web (by Rob Aley, out now) - 25% off Coupon Exclusively for subscribers to phpweekly.com!</a><br>Ever get the feeling that PHP could be useful for more than just websites? "PHP Beyond The Web" by Rob Aley is a new book that will show you how to write CLI scripts, system daemons, desktop software and more, all using your existing PHP skills. For one week only PHP Weekly News readers can save 25% by using coupon code ohSoVytlOEal at<a href="http://phpweekly.us4.list-manage.com/track/click?u=135396dd31790e834e8629b45&amp;id=0153d2fb26&amp;e=2650636000">https://leanpub.com/php</a>&nbsp;(valid until&nbsp;<span>6th December</span>).<br><br><a href="http://phpweekly.us4.list-manage.com/track/click?u=135396dd31790e834e8629b45&amp;id=bd55317274&amp;e=2650636000">Elephant in the Room PHP Podcast Episode #3 - Schools of TDD</a><br>In this episode Konstantin and Mathias discuss the difference between fakes, stubs, mocks and spies; testing the outcome of an action; testing the communication between objects; Kent Beck-style classical TDD and the London School of TDD, with GOOS-style mockist testing.<br><br><a href="http://phpweekly.us4.list-manage.com/track/click?u=135396dd31790e834e8629b45&amp;id=0aa42975dd&amp;e=2650636000">dev/hell Podcast - Episode 37 Jets V Sharks</a><br>Recorded before True North PHP, this episode features Paul M.Jones, creator of the Solar framework and Aura component library. With a broad range of topics including dependency injection and human behaviour in tribes.<br><br><a href="http://phpweekly.us4.list-manage.com/track/click?u=135396dd31790e834e8629b45&amp;id=ec530f4358&amp;e=2650636000">dev/hell Podcast - Dark Secret Branding</a><br>A second offering from Chris and Ed, this one recorded after True North PHP. This episode features a chat with web developer Jonathan Snook,&nbsp;discussing Twitter application development among other things.<br><br><a href="http://phpweekly.us4.list-manage.com/track/click?u=135396dd31790e834e8629b45&amp;id=62e94b7215&amp;e=2650636000">Learning FuelPHP for Effective PHP Development (by Ross Tweedie, published 21st November 2013)</a><br>FuelPHP was one of the first frameworks built for PHP 5.3. It makes use of more advanced features of the language to allow you to focus on delivering features and code for your project. This practical guide will show you how to use FuelPHP to create projects quickly and effectively.<br><br><a href="http://phpweekly.us4.list-manage1.com/track/click?u=135396dd31790e834e8629b45&amp;id=76658f33ca&amp;e=2650636000">PHP Error Reporting - How To Do It Right (by Jay Docherty, published 19th November 2013)</a><br>This book gets stuck into how do PHP error reporting well, with practical examples and downloadable code. It also takes a broader look at strategies and best practices.</td></tr><tr><td><h2>Jobs</h2>If you have a position that needs filling, let us know and we will include it.<br><br><a href="http://phpweekly.us4.list-manage.com/track/click?u=135396dd31790e834e8629b45&amp;id=7ac4a83c79&amp;e=2650636000">Developer at Sailthru (New York City)</a><br>We''re searching for a talented developer who can take the challenge of scaling architectures and dive into leading technologies. You''ll have the opportunity to work with a great team, in the heart of New York City and with great benefits such as working from home. Send your resume to Federico,&nbsp;<a href="mailto:fulfo@sailthru.com">fulfo@sailthru.com</a>.<br><br><a href="http://phpweekly.us4.list-manage.com/track/click?u=135396dd31790e834e8629b45&amp;id=672de65646&amp;e=2650636000">DeskPRO is hiring Full Stack PHP Developer (Symfony/AngularJS) in London or Remote.</a><br>Join our small London based team (excellent remote workers considered as well) building a large PHP application where your work will have immediate impact on our millions of end users. Lots of interesting projects coming up including adding elasticsearch and memached to our stack, writing a DeskPRO app for telephony based upon Twilio, integrating our software with other companies APIs, adding functionality to our phonegap mobile app as well as continuing the development of our core software platform.<br><br><a href="http://phpweekly.us4.list-manage.com/track/click?u=135396dd31790e834e8629b45&amp;id=386318fc38&amp;e=2650636000">PHP (Drupal) developers at Torchbox (Bristol and Oxford, UK)&nbsp;</a><br>Passionate about PHP, delirious about Drupal and want to work on a wide variety of challenging yet fun projects for fantastic clients? If yes, then Torchbox would love to hear from you! In return, we can offer an enviable working environment (country park or buzzing Bristol), a competitive salary, all the usual kit and sometimes even a ski trip.<br><br><a href="http://phpweekly.us4.list-manage.com/track/click?u=135396dd31790e834e8629b45&amp;id=7aaa1cb3f5&amp;e=2650636000">Full Stack Developer&nbsp;</a><br>Major television production company seeks an experienced web developer to join its digital division. The ideal candidate possesses a deep expertise and abiding love of web development, an incredible track record of producing stellar web applications (with a long list of URLs &amp; GitHub repositories to prove it), a near-supernatural work ethic and a fantastic sense of humour.<br><br><a href="http://phpweekly.us4.list-manage.com/track/click?u=135396dd31790e834e8629b45&amp;id=a977f5c4a0&amp;e=2650636000">Machine Learning / AI skills (project based)</a><br>Inovica are looking for someone to work with them on detecting ecommerce products on sites and extracting relevant information. In the first instance please email&nbsp;<a href="mailto:phpweeklyjob@inovica.com">phpweeklyjob@inovica.com</a>stating the experience you have in this field. They don''t have a job description online but will reply to every email they receive.</td></tr></tbody></table></td></tr></tbody></table><br></p>', 100000, '["AC","TV Layar Lebar"]', 'Honey Moon Suite'),
+(12, '<p><i><p>Rooms</p></i><p>We provide Superior, Deluxe, and Standard Rooms, which are arranged in two hotels, that is Cepu Indah Hotel 1 and Cepu Indah Hotel 2.</p><p>All rooms contain a comfortable accommodation by providing some facilities such as air conditioner, TV with 15 channel satellites programs, and unlimited Internet access that could be found in Standard and Deluxe rooms while a refrigerator is provided in Superior rooms.</p><br></p>', 1000000, '["makan bayar sendiri","AC","TV PLasma"]', 'A Room full of an sharp object');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hotel_room_image`
+--
+
+CREATE TABLE IF NOT EXISTS `hotel_room_image` (
+  `hotel_room_image_id` int(11) NOT NULL AUTO_INCREMENT,
+  `hotel_room_image` varchar(255) DEFAULT NULL,
+  `hotel_room_image_hotel_room_id` int(11) NOT NULL,
+  PRIMARY KEY (`hotel_room_image_id`),
+  KEY `hotel_room_image_hotel_room_id` (`hotel_room_image_hotel_room_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=46 ;
+
+--
+-- Dumping data for table `hotel_room_image`
+--
+
+INSERT INTO `hotel_room_image` (`hotel_room_image_id`, `hotel_room_image`, `hotel_room_image_hotel_room_id`) VALUES
+(35, 'Screenshot from 2013-09-26 22:16:09.png', 11),
+(36, 'Screenshot from 2013-09-21 06:25:18.png', 11),
+(39, 'Screenshot from 2013-09-13 02:24:29.png', 11),
+(40, 'rooms6.jpg', 12),
+(41, 'rooms5.jpg', 12),
+(42, 'rooms4.jpg', 12),
+(43, 'rooms3.jpg', 12),
+(44, 'rooms2.jpg', 12),
+(45, 'rooms1.jpg', 12);
 
 -- --------------------------------------------------------
 
@@ -63,7 +110,7 @@ CREATE TABLE IF NOT EXISTS `site_administrator` (
 
 INSERT INTO `site_administrator` (`admin_id`, `admin_group_id`, `admin_username`, `admin_password`, `admin_last_login`, `admin_is_active`) VALUES
 (6, 1, 'bonus1', '827ccb0eea8a706c4c34a16891f84e7b', '2013-03-13 00:35:16', '1'),
-(5, 1, 'admin', '21232f297a57a5a743894a0e4a801fc3', '2013-11-28 14:39:57', '1');
+(5, 1, 'admin', '21232f297a57a5a743894a0e4a801fc3', '2013-12-04 01:54:19', '1');
 
 -- --------------------------------------------------------
 
@@ -98,18 +145,17 @@ CREATE TABLE IF NOT EXISTS `site_config` (
   `config_data` text NOT NULL,
   PRIMARY KEY (`config_id`),
   KEY `config_name` (`config_name`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
 
 --
 -- Dumping data for table `site_config`
 --
 
 INSERT INTO `site_config` (`config_id`, `config_name`, `config_data`) VALUES
-(1, 'website_title', 's:5:"Hotel";'),
-(2, 'website_keyword', 's:5:"hotel";'),
-(3, 'website_description', 's:5:"hotel";'),
-(15, 'mlm_price', 'i:0;'),
-(16, 'mlm_email', 's:20:"andromajid@gmail.com";');
+(1, 'website_title', 's:21:"http://hokkydjoen.com";'),
+(2, 'website_keyword', 's:21:"http://hokkydjoen.com";'),
+(3, 'website_description', 's:21:"http://hokkydjoen.com";'),
+(15, 'mlm_price', 'i:2500000;');
 
 -- --------------------------------------------------------
 
@@ -121,7 +167,7 @@ CREATE TABLE IF NOT EXISTS `site_controller_action` (
   `con_action_id` int(14) NOT NULL AUTO_INCREMENT,
   `con_action_data` varchar(127) DEFAULT NULL,
   PRIMARY KEY (`con_action_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=101 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=115 ;
 
 --
 -- Dumping data for table `site_controller_action`
@@ -227,7 +273,21 @@ INSERT INTO `site_controller_action` (`con_action_id`, `con_action_data`) VALUES
 (97, 'admin.gallery_category.list'),
 (98, 'admin.report.index'),
 (99, 'admin.member.suspendmember'),
-(100, 'admin.transfer.gettransferexcel');
+(100, 'admin.transfer.gettransferexcel'),
+(101, 'admin.hotel_room.view'),
+(102, 'admin.hotel_room.create'),
+(103, 'admin.hotel_room.update'),
+(104, 'admin.hotel_room.delete'),
+(105, 'admin.hotel_room.index'),
+(106, 'admin.hotel_room.admin'),
+(107, 'admin.hotel_room.list'),
+(108, 'admin.hotel_booking.view'),
+(109, 'admin.hotel_booking.create'),
+(110, 'admin.hotel_booking.update'),
+(111, 'admin.hotel_booking.delete'),
+(112, 'admin.hotel_booking.index'),
+(113, 'admin.hotel_booking.admin'),
+(114, 'admin.hotel_room.delete_image');
 
 -- --------------------------------------------------------
 
@@ -245,12 +305,6 @@ CREATE TABLE IF NOT EXISTS `site_con_action_prev` (
 --
 
 INSERT INTO `site_con_action_prev` (`con_action_prev_admin_group_id`, `con_action_prev_con_action_id`) VALUES
-(1, 18),
-(1, 20),
-(1, 21),
-(1, 14),
-(1, 17),
-(1, 16),
 (1, 15),
 (1, 13),
 (1, 34),
@@ -301,6 +355,20 @@ INSERT INTO `site_con_action_prev` (`con_action_prev_admin_group_id`, `con_actio
 (1, 31),
 (1, 29),
 (1, 33),
+(1, 101),
+(1, 103),
+(1, 107),
+(1, 105),
+(1, 114),
+(1, 104),
+(1, 102),
+(1, 106),
+(1, 108),
+(1, 110),
+(1, 112),
+(1, 111),
+(1, 109),
+(1, 113),
 (1, 93),
 (1, 95),
 (1, 97),
@@ -309,6 +377,7 @@ INSERT INTO `site_con_action_prev` (`con_action_prev_admin_group_id`, `con_actio
 (1, 84),
 (1, 82),
 (1, 80),
+(1, 92),
 (1, 83),
 (1, 81),
 (1, 2),
@@ -332,6 +401,12 @@ INSERT INTO `site_con_action_prev` (`con_action_prev_admin_group_id`, `con_actio
 (1, 41),
 (1, 42),
 (1, 38),
+(1, 16),
+(1, 17),
+(1, 14),
+(1, 21),
+(1, 20),
+(1, 18),
 (1, 19);
 
 -- --------------------------------------------------------
@@ -360,15 +435,7 @@ CREATE TABLE IF NOT EXISTS `site_gallery` (
 --
 
 INSERT INTO `site_gallery` (`gallery_id`, `gallery_gallery_category_id`, `gallery_admin_id`, `gallery_title`, `gallery_content`, `gallery_image`, `gallery_url`, `gallery_is_active`, `gallery_input_datetime`, `gallery_is_top`) VALUES
-(10, 8, 0, 'Banner 1', '<p>\r\n	banner</p>\r\n', '/images/gallery/social-cloud-business-enterprise-hand.jpg', 'http://', '1', '2013-03-03 15:13:50', 0),
-(11, 9, 0, 'Bawah 1', '<p>\r\n	bawah</p>\r\n', '/images/gallery/banner-hokky.jpg', 'http://jogja360.com', '1', '2013-03-03 15:19:44', 0),
-(12, 10, 0, 'Partner1', '<p>\r\n	partner</p>\r\n', '/images/gallery/mitra.jpg', 'http://', '1', '2013-03-03 15:22:32', 0),
-(13, 11, 0, 'Album 1', '<p>\r\n	album 1</p>\r\n', '/images/gallery/Healthy-Lifestyle.jpg', 'http://', '1', '2013-03-03 15:28:47', 0),
-(15, 11, 0, 'Kesehatan', '<p>kesehatan<br></p>', '/images/gallery/url.jpeg', 'http://', '1', '2013-03-16 11:45:18', 0),
-(16, 11, 0, 'Hidup Sehat', '<p>sehat <br></p>', '/images/gallery/living_a_healthy_life-759360.jpg', 'http://', '1', '2013-03-16 11:45:58', 0),
-(17, 11, 0, 'Seger', '<blockquote>seger</blockquote><p><br></p>', '/images/gallery/Healthy-Morning-Must-.jpg', 'http://', '1', '2013-03-16 11:53:56', 0),
-(18, 7, 0, 'ngga ada judul', '<p>dasd</p>', '/images/gallery/wallpaper-2819258.jpg', 'http://', '1', '2013-11-26 11:03:04', 0),
-(19, 7, 0, 'belum ada judul lagi', '<p>dsfs</p>', '/images/gallery/wallpaper-2348297.jpg', 'http://', '1', '2013-11-26 11:08:19', 0);
+(19, 7, 0, 'bg', '<p>test</p>', '/images/gallery/bg.jpg', 'http://', '1', '2013-12-04 02:25:47', 0);
 
 -- --------------------------------------------------------
 
@@ -391,10 +458,7 @@ CREATE TABLE IF NOT EXISTS `site_gallery_category` (
 --
 
 INSERT INTO `site_gallery_category` (`gallery_category_id`, `gallery_category_title`, `gallery_category_description`, `gallery_category_is_active`, `gallery_category_image`, `gallery_category_is_delete`) VALUES
-(7, 'slide', NULL, '1', NULL, 0),
-(8, 'Banner Kanan Atas', NULL, '1', NULL, 1),
-(9, 'Banner Bawah', NULL, '1', NULL, 1),
-(10, 'Banner Partner', NULL, '1', NULL, 1),
+(7, 'Slide', NULL, '1', NULL, 1),
 (11, 'Album', NULL, '1', NULL, 1);
 
 -- --------------------------------------------------------
@@ -414,18 +478,18 @@ CREATE TABLE IF NOT EXISTS `site_menu` (
   `menu_location` enum('user','member','stockist','admin') NOT NULL,
   `menu_is_active` enum('0','1') NOT NULL DEFAULT '0',
   PRIMARY KEY (`menu_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=150 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=153 ;
 
 --
 -- Dumping data for table `site_menu`
 --
 
 INSERT INTO `site_menu` (`menu_id`, `menu_par_id`, `menu_title`, `menu_description`, `menu_link`, `menu_page_id`, `menu_order_by`, `menu_location`, `menu_is_active`) VALUES
-(3, 0, 'System', 'Menu untuk mengelola Menu Halaman User, Halaman Member, Halaman Administrator', '', 0, 68, 'admin', '1'),
+(3, 0, 'System', 'Menu untuk mengelola Menu Halaman User, Halaman Member, Halaman Administrator', '', 0, 73, 'admin', '1'),
 (110, 109, 'User', '', '/admin/user', 0, 46, 'admin', '1'),
 (111, 109, 'Group Admin', '', '/admin/usergroup', 0, 47, 'admin', '1'),
 (112, 22, 'Menu Public', '', '/admin/menu/list/type/user', 0, 48, 'admin', '1'),
-(113, 0, 'Content', '', '#', 0, 65, 'admin', '1'),
+(113, 0, 'Content', '', '#', 0, 68, 'admin', '1'),
 (114, 113, 'File Manager', '', '/admin/file', 0, 50, 'admin', '1'),
 (115, 113, 'Page', '', '/admin/page/list', 0, 51, 'admin', '1'),
 (108, 22, 'Menu Admin', '', '/admin/menu/list/type/admin', 0, 44, 'admin', '1'),
@@ -483,7 +547,10 @@ INSERT INTO `site_menu` (`menu_id`, `menu_par_id`, `menu_title`, `menu_descripti
 (144, 120, 'Daftar Serial', '', 'aktivasi/list', 0, 69, 'admin', '1'),
 (145, 120, 'Pencarian Pin', '', 'aktivasi/search_serial_pin', 0, 70, 'admin', '1'),
 (146, 0, 'Kode Etik Member', 'Kode Etik', 'page/index/id/6', 0, 1, 'user', '1'),
-(149, 133, 'Gallery', '', '/admin/gallery/list', 0, 72, 'admin', '1');
+(149, 133, 'Gallery', '', '/admin/gallery/list', 0, 72, 'admin', '1'),
+(150, 0, 'Hotel', '', '', 0, 65, 'admin', '1'),
+(151, 150, 'Hotel Room', '', '/admin/hotel_room/list', 0, 74, 'admin', '1'),
+(152, 150, 'Hotel Book', '', '/admin/hotel_booking/admin', 0, 75, 'admin', '1');
 
 -- --------------------------------------------------------
 
@@ -564,6 +631,9 @@ INSERT INTO `site_menu_privilege` (`privilege_admin_group_id`, `privilege_menu_i
 (2, 50),
 (2, 49),
 (2, 2),
+(1, 152),
+(1, 151),
+(1, 150),
 (1, 143),
 (1, 132),
 (1, 131),
@@ -608,27 +678,17 @@ CREATE TABLE IF NOT EXISTS `site_news` (
   `news_is_active` enum('0','1') NOT NULL DEFAULT '0',
   `news_input_datetime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`news_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='data berita' AUTO_INCREMENT=15 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='data berita' AUTO_INCREMENT=14 ;
 
 --
 -- Dumping data for table `site_news`
 --
 
 INSERT INTO `site_news` (`news_id`, `news_news_category_id`, `news_admin_id`, `news_source`, `news_title`, `news_subtitle`, `news_short_content`, `news_content`, `news_video_url`, `news_image`, `news_is_active`, `news_input_datetime`) VALUES
-(1, 1, 1, 'http://blog.supexteam.com', 'Apakah Multi Level Marketing ?', '', 'Sukses adalah dambaan setiap orang. Tidak ada satu orangpun yang menginginkan kegagalan dalam hidupnya. Untuk mencapai prestasi kesuksesan dalam hidup Anda yang terlebih dahulu Anda punyai adalah tujuan hidup (goal setting). Tidak adanya tujuan hidup dalam diri Anda akan menyebabkan diri Anda pasif menerima apa saja yang disodorkan oleh kehidupan kepada Anda dan biasanya hidup Anda menjadi sangat menbosankan sekaligus tidak menggairahkan. ', 'Lorem Ipsum adalah contoh teks atau dummy dalam industri percetakan dan penataan huruf atau typesetting. Lorem Ipsum telah menjadi standar contoh teks sejak tahun 1500an, saat seorang tukang cetak yang tidak dikenal mengambil sebuah kumpulan teks dan mengacaknya untuk menjadi sebuah buku contoh huruf. Ia tidak hanya bertahan selama 5 abad, tapi juga telah beralih ke penataan huruf elektronik, tanpa ada perubahan apapun. Ia mulai dipopulerkan pada tahun 1960 dengan diluncurkannya lembaran-lembaran Letraset yang menggunakan kalimat-kalimat dari Lorem Ipsum, dan seiring munculnya perangkat lunak Desktop Publishing seperti Aldus PageMaker juga memiliki versi Lorem Ipsum.', NULL, '', '1', '2011-07-21 12:22:36'),
-(2, 1, 2, 'http://haryantokandani.com', 'Profesionalisme', NULL, 'Dunia menuntut profesionalisme. Nilai yang kita perlu tingkatkan adalah profesionalisme dalam bermasyarakat, berorganisasi. Tahukah bahwa dunia mencari orang-orang yang profesional bahkan mereka berani bayar mahal untuk itu. Kalau dari sekarang kita mulai mengembangkan profesionalisme maka beberapa waktu dari saat ini kita akan memiliki kehidupan yang berkualitas tinggi. ', 'Lorem Ipsum adalah contoh teks atau dummy dalam industri percetakan dan penataan huruf atau typesetting. Lorem Ipsum telah menjadi standar contoh teks sejak tahun 1500an, saat seorang tukang cetak yang tidak dikenal mengambil sebuah kumpulan teks dan mengacaknya untuk menjadi sebuah buku contoh huruf. Ia tidak hanya bertahan selama 5 abad, tapi juga telah beralih ke penataan huruf elektronik, tanpa ada perubahan apapun. Ia mulai dipopulerkan pada tahun 1960 dengan diluncurkannya lembaran-lembaran Letraset yang menggunakan kalimat-kalimat dari Lorem Ipsum, dan seiring munculnya perangkat lunak Desktop Publishing seperti Aldus PageMaker juga memiliki versi Lorem Ipsum.', NULL, NULL, '1', '2011-07-21 22:10:01'),
-(3, 1, 1, 'http://hanajatim.tripod.com', 'Sukses adalah Sebuah Pilihan', NULL, 'Saat ini masyarakat sudah tidak Asing lagi dengan MLM, ini menandakan bahwa bisnis mlm bukan lagi bisnis yang tabu dan di pandang sebelah mata, karena semakin terbuktinya perusahaan mlm mencetak Milyuner-milyuner baru di dunia, tunggu penawaran kami untuk anda yang mempersiapkan diri menjadi pengusaha di bisnis ini, karena uang bukan lagi menjadi halangan untuk anda memulai membangun perusahaan MLM. ', 'Lorem Ipsum adalah contoh teks atau dummy dalam industri percetakan dan penataan huruf atau typesetting. Lorem Ipsum telah menjadi standar contoh teks sejak tahun 1500an, saat seorang tukang cetak yang tidak dikenal mengambil sebuah kumpulan teks dan mengacaknya untuk menjadi sebuah buku contoh huruf. Ia tidak hanya bertahan selama 5 abad, tapi juga telah beralih ke penataan huruf elektronik, tanpa ada perubahan apapun. Ia mulai dipopulerkan pada tahun 1960 dengan diluncurkannya lembaran-lembaran Letraset yang menggunakan kalimat-kalimat dari Lorem Ipsum, dan seiring munculnya perangkat lunak Desktop Publishing seperti Aldus PageMaker juga memiliki versi Lorem Ipsum.', NULL, NULL, '1', '2011-07-21 22:11:17'),
-(4, 2, 5, 'Test', 'Test Title', NULL, NULL, 'Lorem Ipsum adalah contoh teks atau dummy dalam industri percetakan dan penataan huruf atau typesetting. Lorem Ipsum telah menjadi standar contoh teks sejak tahun 1500an, saat seorang tukang cetak yang tidak dikenal mengambil sebuah kumpulan teks dan mengacaknya untuk menjadi sebuah buku contoh huruf. Ia tidak hanya bertahan selama 5 abad, tapi juga telah beralih ke penataan huruf elektronik, tanpa ada perubahan apapun. Ia mulai dipopulerkan pada tahun 1960 dengan diluncurkannya lembaran-lembaran Letraset yang menggunakan kalimat-kalimat dari Lorem Ipsum, dan seiring munculnya perangkat lunak Desktop Publishing seperti Aldus PageMaker juga memiliki versi Lorem Ipsum.', NULL, 'sock-toe.jpg', '1', '2013-02-28 20:57:56'),
-(5, 2, 5, 'Test', 'Test Title', NULL, NULL, 'Lorem Ipsum adalah contoh teks atau dummy dalam industri percetakan dan penataan huruf atau typesetting. Lorem Ipsum telah menjadi standar contoh teks sejak tahun 1500an, saat seorang tukang cetak yang tidak dikenal mengambil sebuah kumpulan teks dan mengacaknya untuk menjadi sebuah buku contoh huruf. Ia tidak hanya bertahan selama 5 abad, tapi juga telah beralih ke penataan huruf elektronik, tanpa ada perubahan apapun. Ia mulai dipopulerkan pada tahun 1960 dengan diluncurkannya lembaran-lembaran Letraset yang menggunakan kalimat-kalimat dari Lorem Ipsum, dan seiring munculnya perangkat lunak Desktop Publishing seperti Aldus PageMaker juga memiliki versi Lorem Ipsum.', NULL, 'social-mobile-cloud.jpg', '1', '2013-02-28 21:02:13'),
-(6, 3, 5, 'Testing Source', 'Testing', NULL, NULL, 'Lorem Ipsum adalah contoh teks atau dummy dalam industri percetakan dan penataan huruf atau typesetting. Lorem Ipsum telah menjadi standar contoh teks sejak tahun 1500an, saat seorang tukang cetak yang tidak dikenal mengambil sebuah kumpulan teks dan mengacaknya untuk menjadi sebuah buku contoh huruf. Ia tidak hanya bertahan selama 5 abad, tapi juga telah beralih ke penataan huruf elektronik, tanpa ada perubahan apapun. Ia mulai dipopulerkan pada tahun 1960 dengan diluncurkannya lembaran-lembaran Letraset yang menggunakan kalimat-kalimat dari Lorem Ipsum, dan seiring munculnya perangkat lunak Desktop Publishing seperti Aldus PageMaker juga memiliki versi Lorem Ipsum.', NULL, 'sock-toe.jpg', '1', '2013-02-28 21:43:03'),
-(7, 4, 5, 'Produk 1 ', 'Produk', NULL, NULL, 'Lorem Ipsum adalah contoh teks atau dummy dalam industri percetakan dan penataan huruf atau typesetting. Lorem Ipsum telah menjadi standar contoh teks sejak tahun 1500an, saat seorang tukang cetak yang tidak dikenal mengambil sebuah kumpulan teks dan mengacaknya untuk menjadi sebuah buku contoh huruf. Ia tidak hanya bertahan selama 5 abad, tapi juga telah beralih ke penataan huruf elektronik, tanpa ada perubahan apapun. Ia mulai dipopulerkan pada tahun 1960 dengan diluncurkannya lembaran-lembaran Letraset yang menggunakan kalimat-kalimat dari Lorem Ipsum, dan seiring munculnya perangkat lunak Desktop Publishing seperti Aldus PageMaker juga memiliki versi Lorem Ipsum.', NULL, '', '1', '2013-02-28 22:17:22'),
-(8, 6, 5, '', 'Promo', NULL, NULL, 'Lorem Ipsum adalah contoh teks atau dummy dalam industri percetakan dan penataan huruf atau typesetting. Lorem Ipsum telah menjadi standar contoh teks sejak tahun 1500an, saat seorang tukang cetak yang tidak dikenal mengambil sebuah kumpulan teks dan mengacaknya untuk menjadi sebuah buku contoh huruf. Ia tidak hanya bertahan selama 5 abad, tapi juga telah beralih ke penataan huruf elektronik, tanpa ada perubahan apapun. Ia mulai dipopulerkan pada tahun 1960 dengan diluncurkannya lembaran-lembaran Letraset yang menggunakan kalimat-kalimat dari Lorem Ipsum, dan seiring munculnya perangkat lunak Desktop Publishing seperti Aldus PageMaker juga memiliki versi Lorem Ipsum.', NULL, 'not_bad.jpg', '1', '2013-02-28 23:13:02'),
-(9, 5, 5, '', 'Dapatkan Reword Umrah ke Tanah Suci', NULL, NULL, 'Lorem Ipsum adalah contoh teks atau dummy dalam industri percetakan dan penataan huruf atau typesetting. Lorem Ipsum telah menjadi standar contoh teks sejak tahun 1500an, saat seorang tukang cetak yang tidak dikenal mengambil sebuah kumpulan teks dan mengacaknya untuk menjadi sebuah buku contoh huruf. Ia tidak hanya bertahan selama 5 abad, tapi juga telah beralih ke penataan huruf elektronik, tanpa ada perubahan apapun. Ia mulai dipopulerkan pada tahun 1960 dengan diluncurkannya lembaran-lembaran Letraset yang menggunakan kalimat-kalimat dari Lorem Ipsum, dan seiring munculnya perangkat lunak Desktop Publishing seperti Aldus PageMaker juga memiliki versi Lorem Ipsum.', NULL, 'umrah.jpg', '1', '2013-03-02 13:28:44'),
-(10, 7, 5, 'Youtube', 'For The First Time', NULL, NULL, 'Lorem Ipsum adalah contoh teks atau dummy dalam industri percetakan dan penataan huruf atau typesetting. Lorem Ipsum telah menjadi standar contoh teks sejak tahun 1500an, saat seorang tukang cetak yang tidak dikenal mengambil sebuah kumpulan teks dan mengacaknya untuk menjadi sebuah buku contoh huruf. Ia tidak hanya bertahan selama 5 abad, tapi juga telah beralih ke penataan huruf elektronik, tanpa ada perubahan apapun. Ia mulai dipopulerkan pada tahun 1960 dengan diluncurkannya lembaran-lembaran Letraset yang menggunakan kalimat-kalimat dari Lorem Ipsum, dan seiring munculnya perangkat lunak Desktop Publishing seperti Aldus PageMaker juga memiliki versi Lorem Ipsum.', 'http://www.youtube.com/embed/CPEBN2dVNUY', '', '1', '2013-03-03 16:34:05'),
+(10, 7, 5, 'Youtube', 'For The First Time', NULL, NULL, 'Lorem Ipsum adalah contoh teks atau dummy dalam industri percetakan dan penataan huruf atau typesetting. Lorem Ipsum telah menjadi standar contoh teks sejak tahun 1500an, saat seorang tukang cetak yang tidak dikenal mengambil sebuah kumpulan teks dan mengacaknya untuk menjadi sebuah buku contoh huruf. Ia tidak hanya bertahan selama 5 abad, tapi juga telah beralih ke penataan huruf elektronik, tanpa ada perubahan apapun. Ia mulai dipopulerkan pada tahun 1960 dengan diluncurkannya lembaran-lembaran Letraset yang menggunakan kalimat-kalimat dari Lorem Ipsum, dan seiring munculnya perangkat lunak Desktop Publishing seperti Aldus PageMaker juga memiliki versi Lorem Ipsum.', 'http://www.youtube.com/embed/CPEBN2dVNUY', '', '0', '2013-03-03 16:34:05'),
 (11, 7, 5, 'Youtube', 'Astronout Simple Plan', NULL, NULL, 'Lorem Ipsum adalah contoh teks atau dummy dalam industri percetakan dan penataan huruf atau typesetting. Lorem Ipsum telah menjadi standar contoh teks sejak tahun 1500an, saat seorang tukang cetak yang tidak dikenal mengambil sebuah kumpulan teks dan mengacaknya untuk menjadi sebuah buku contoh huruf. Ia tidak hanya bertahan selama 5 abad, tapi juga telah beralih ke penataan huruf elektronik, tanpa ada perubahan apapun. Ia mulai dipopulerkan pada tahun 1960 dengan diluncurkannya lembaran-lembaran Letraset yang menggunakan kalimat-kalimat dari Lorem Ipsum, dan seiring munculnya perangkat lunak Desktop Publishing seperti Aldus PageMaker juga memiliki versi Lorem Ipsum.', 'http://www.youtube.com/embed/N-MgRkSh5Xk', '', '1', '2013-03-03 16:45:12'),
 (12, 7, 5, 'Youtube', 'The Script - If You Ever Come Back', NULL, NULL, 'Lorem Ipsum adalah contoh teks atau dummy dalam industri percetakan dan penataan huruf atau typesetting. Lorem Ipsum telah menjadi standar contoh teks sejak tahun 1500an, saat seorang tukang cetak yang tidak dikenal mengambil sebuah kumpulan teks dan mengacaknya untuk menjadi sebuah buku contoh huruf. Ia tidak hanya bertahan selama 5 abad, tapi juga telah beralih ke penataan huruf elektronik, tanpa ada perubahan apapun. Ia mulai dipopulerkan pada tahun 1960 dengan diluncurkannya lembaran-lembaran Letraset yang menggunakan kalimat-kalimat dari Lorem Ipsum, dan seiring munculnya perangkat lunak Desktop Publishing seperti Aldus PageMaker juga memiliki versi Lorem Ipsum.', 'http://www.youtube.com/embed/SLJqJ6BDPnQ', '', '1', '2013-03-03 17:14:50'),
-(13, 7, 5, 'Youtube', 'Maroon 5 - One More Night', NULL, NULL, 'Lorem Ipsum adalah contoh teks atau dummy dalam industri percetakan dan penataan huruf atau typesetting. Lorem Ipsum telah menjadi standar contoh teks sejak tahun 1500an, saat seorang tukang cetak yang tidak dikenal mengambil sebuah kumpulan teks dan mengacaknya untuk menjadi sebuah buku contoh huruf. Ia tidak hanya bertahan selama 5 abad, tapi juga telah beralih ke penataan huruf elektronik, tanpa ada perubahan apapun. Ia mulai dipopulerkan pada tahun 1960 dengan diluncurkannya lembaran-lembaran Letraset yang menggunakan kalimat-kalimat dari Lorem Ipsum, dan seiring munculnya perangkat lunak Desktop Publishing seperti Aldus PageMaker juga memiliki versi Lorem Ipsum.', 'http://www.youtube.com/embed/fwK7ggA3-bU', '', '1', '2013-03-03 17:17:36'),
-(14, 4, 5, '', 'Hokky Djoen Energy Ring Teknologi Nano', NULL, NULL, '<p>POWER RING TEKNOLOGI NANO<br>Adalah cincin terapi untuk Memperbesar dan Memperpanjang Mr.P<br>GLOW IN THE DARK POWER RING Ion Energi 300 – 400<br><br>Lebih keras &amp; lebih lama<br>Meningkatkan daya tahan seksual<br>Memperlambat ejakulasi<br>Meningkatkan intensitas dan volume orgasme<br>Mempertahankan ereksi lebih maksimal<br>Digunakan sebagai perangkat penyempitan (tourniquet) untuk pembesaran penis. <br><br>Memperbaiki control seksual laki-laki<br>Seperti yang dijelaskan sebelumnya, banyak orang mengalami kesulitan mengendalikan orgasme mereka. Power Ring secara langsung membantu orang mengendalikan kualitas orgasme mereka, tapi seiring waktu dapat membantu orang belajar bagaimana melakukan ini tanpa memakai Power Ring bila mereka menghendaki.<br><br>Banyak pria tidak puas dengan ukuran penis mereka dan telah mengambil langkah-langkah untuk meningkatkan ukuran melalui semua latihan pembesaran penis secara alami. Semua program latihan alami memberikan banyak manfaat bagi manusia dan adalah sesuatu yang kami sarankan bagi pelanggan kami peduli dengan ukuran dan kesehatan penis. Power Ring sangat aman dan efektif untuk membantu melakukan latihan secara alami. Hal ini terutama penting jika penis lebih kecil dari ukuran rata-rata.<br><br>Cara Menggunakan Power Ring. <br><br>1.Masukkan Power Ring ke Batang Penis sebelum Penis Tegang, dimana sisi yang ada Garis Melingkar / Setengah Lingkaran menghadap ke Dalam &amp; Menempel di dinding dan pastikan posisi saluran kencing ada di Bawah, bila perlu untuk mendapatkan hasil yg terbaik, cukur rambut yang tumbuh di batang Penis.<br>Jika Power Ring sulit masuk, Pegang sisi Kiri dan Kanan kemudian tarik untuk Memelarkan<br><br>2.Berikan rangsangan agar Penis Tegang &amp; Power Ring bisa langsung dipakai untuk berhubungan Intim<br>"Di awal Pemakaian anda akan merasa sedikit sakit ,di karenakan&nbsp; Power Ring menjepit Batang Penis anda, dan setelah terbiasa, semuanya akan baik baik saja."<br>Dan pasangan anda akan merasakan perbedaan dan kenikmatan yang sangat luar biasa.<br><br>3.Jika sudah selesai menggunakan, Cuci Power Ring dengan Air/Sabun ,dikeringkan, kemudian simpan di dalam Plastik<br>Pesan:<br>Power Ring dapat digunakan setiap Hari untuk melakukan Hubungan Intim :<br>Penggunaan yang disarankan untuk melakukan Hubungan Intim adalah setiap 2 hari sekali [ sekarang pakai-besok libur-pakai-libur-pakai-libur ]<br><br>1 . Power Ring Bisa dipakai hingga 30x Dari Pagi s/d Sore atau dari Sore s/d Pagi , Dan Sangat Baik digunakan saat Berhubungan Intim.<br>Dikarenakan Ring menjepit Batang Penis, Jadi Power Ring tidak akan lepas / tertinggal pada saat anda melakukan Hubungan Intim<br>Untuk mendapatkan hasil yang Maksimal , Membesarkan, Memanjangkan dengan memakai&nbsp; Power Ring Secara Rutin setiap dua (2) Hari Sekali<br>Di awal pemakaian Jika anda tidak bisa melihat perbedaan yang terjadi di Penis anda , Tanyalah pada Partner/Pasangan anda , Tanyakan bagaimana Rasanya /Enak ,kan Jika melakukan Hubungan Intim dengan menggunakan Power Ring atau Tanpa Power RIng<br>Kenapa Bisa Begitu??? Ini LogikaNya<br>Ereksi terjadi ketika penis terisi darah. Sejumlah kecil darah memasuki Corpus spongiosum, yang merupakan ruangan yang digunakan terutama untuk buang air kecil dan ejakulasi. Sisa darah masuk ke corpus cavernosum, yang merupakan jaringan mirip spons yang bertindak sebagai darah utama ruang memegang penis. Bahkan, Corpus cavernosum adalah tempat di mana lebih dari 90% dari semua darah yang diadakan setiap kali Anda mencapai ereksi.<br>Memperluas kapasitas Corpus cavernosum penis melalui Power Ring<br>Energy ring alami membantu untuk benar-benar meruntuhkan dinding-dinding sel corpus cavernosum dengan memaksa darah ke jaringan ereksi yang aman, terkendali. Setiap kali hal ini dilakukan, sel-sel yang berkembang di luar batasan normal mereka.<br><br>Power Ring memperbaikan sel-sel, membuat mereka (penis) lebih besar dan kuat untuk menahan peningkatan aliran darah yang dihasilkan oleh energy power ring. Adaptasi ini memungkinkan penis untuk menahan lebih banyak darah daripada sebelumnya. Selama beberapa minggu, terus-menerus breakdown dan membangun kembali sel-sel dalam Corpus cavernosum setara dengan peningkatan yang nyata ukuran penis secara bertahap.<br>Oleh karena itu, rahasia nyata dan kesehatan penis secara keseluruhan adalah untuk melaksanakan <br>corpus cavernosum secara teratur menggunakan Power Ring yang dikembangkan secara khusus dan teknik, yang tidak hanya memperbaiki penis, tapi juga akan meningkatkan sirkulasi darah keseluruhan.<br><br>meningkatkan kekuatan dan kontrol ejakulasi Anda, dan meningkatkan daya tahan seksual Anda sehingga Anda dapat berlangsung selama yang Anda inginkan. Jadi, katakan padaku, apakah Anda ingin memiliki hubungan yang lebih lama, lebih tebal dan penis yang lebih sehat ?<br>Seperti dilansir WebMD, perubahan fungsi Mr.P termasuk:<br><br>Ukuran<br>Penambahan berat badan umum terjadi pada pria seiring penambahan usia. Saat lemak terakumulasi di bawah perut, ukuran Mr.P berubah.<br>"Daerah sekitar pinggang yang penuh tumpukan lemak membuat batang Mr P lebih pendek," kata Ira Sharlip MD, clinical professor of urology pada the University of California, San Francisco.<br><br>"Dalam beberapa kasus, lemak di sekitar perut dan bokong ? mengubur'' Mr P. Satu cara saya memotivasi pasien saya yang kelebihan berat badan adalah dengan mengatakan, Mr P bisa ? muncul'' beberapa inci hanya dengan menurunkan berat badan," ungkap Ronald Tamler, MD, PhD, co-director the Men''s Health Program pada Mount Sinai Hospital di New York City.<br><br>Dalam hal penyusutan tampilan, Mr.P cenderung mengalami perubahan bentuk, baik panjang maupun ketebalannya. "Kalau ereksi, kira-kira panjang Mr P 6-7 inci saat usia 30 tahun, mungkin sekitar 5 atau 5,5 inci saat usianya mencapai 60 atau 70 tahun," ungkap Irwin Goldstein MD, Director Sexual Medicine Alvarado Hospital di San Diego sekaligus editor-in-chief Journal of Sexual Medicine.<br><br>Apa yang menyebabkan Mr P menyusut? Setidaknya dua mekanisme yang mempengaruhi: Pertama, endapan zat berlemak (plak-plak) di dalam arteri Mr P yang mengganggu aliran darah menuju organ tersebut. <br>Proses ini, dikenal dengan ateroklerosis, juga memberi hambatan di dalam arteri koroner, penyebab utama serangan jantung.<br><br>Goldstein memaparkan, mekanisme lain termasuk penumpukan kolagen inelastik (lapisan tisu) secara berkala di antara serat-serat elastis yang mengelilingi bilik ereksi. Ereksi terjadi saat bilik-bilik ini terisi oleh darah. Hambatan di antara arteri Mr P-dan peningkatan bilik-bilik inelastik-menyebabkan ereksi semakin lemah.<br><br>Ukuran Mr P berubah, begitu pun testikel (kantong kemaluan). "Dimulai pada usia 40 tahun, testikel mulai menyusut. Testikel pria usia 30 tahun memiliki diameter 3 cm, dan di usia 60 tahun menjadi hanya 2 cm," ungkap Goldstein.<br><br></p>', NULL, 'produk-ring.jpg', '1', '2013-03-23 12:43:25');
+(13, 7, 5, 'Youtube', 'Maroon 5 - One More Night', NULL, NULL, 'Lorem Ipsum adalah contoh teks atau dummy dalam industri percetakan dan penataan huruf atau typesetting. Lorem Ipsum telah menjadi standar contoh teks sejak tahun 1500an, saat seorang tukang cetak yang tidak dikenal mengambil sebuah kumpulan teks dan mengacaknya untuk menjadi sebuah buku contoh huruf. Ia tidak hanya bertahan selama 5 abad, tapi juga telah beralih ke penataan huruf elektronik, tanpa ada perubahan apapun. Ia mulai dipopulerkan pada tahun 1960 dengan diluncurkannya lembaran-lembaran Letraset yang menggunakan kalimat-kalimat dari Lorem Ipsum, dan seiring munculnya perangkat lunak Desktop Publishing seperti Aldus PageMaker juga memiliki versi Lorem Ipsum.', 'http://www.youtube.com/embed/fwK7ggA3-bU', '', '1', '2013-03-03 17:17:36');
 
 -- --------------------------------------------------------
 
@@ -673,64 +733,34 @@ CREATE TABLE IF NOT EXISTS `site_page` (
   `page_is_active` enum('0','1') NOT NULL DEFAULT '1',
   `page_is_delete` int(1) unsigned NOT NULL DEFAULT '1' COMMENT '0=> tidak bisa dihapus; 1=> bisa dihapus',
   PRIMARY KEY (`page_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='data konten halaman berupa teks & gambar' AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='data konten halaman berupa teks & gambar' AUTO_INCREMENT=12 ;
 
 --
 -- Dumping data for table `site_page`
 --
 
 INSERT INTO `site_page` (`page_id`, `page_par_id`, `page_key`, `page_title`, `page_content`, `page_location`, `page_is_active`, `page_is_delete`) VALUES
-(5, 0, NULL, 'Contact Us', '', 'user', '1', 0);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `site_support`
---
-
-CREATE TABLE IF NOT EXISTS `site_support` (
-  `support_id` int(15) NOT NULL AUTO_INCREMENT,
-  `support_name` varchar(255) NOT NULL,
-  `support_nick` varchar(255) NOT NULL,
-  `support_phone` varchar(255) NOT NULL,
-  PRIMARY KEY (`support_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
-
---
--- Dumping data for table `site_support`
---
-
-INSERT INTO `site_support` (`support_id`, `support_name`, `support_nick`, `support_phone`) VALUES
-(3, 'Taufik', 'taufik33', '123456'),
-(4, 'Faddal', 'faddal_cisco', '12345663');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `site_testimonial`
---
-
-CREATE TABLE IF NOT EXISTS `site_testimonial` (
-  `testimonial_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `testimonial_name` varchar(200) NOT NULL,
-  `testimonial_content` longtext NOT NULL,
-  `testimonial_is_active` int(1) NOT NULL DEFAULT '1',
-  `testimonial_date` date NOT NULL,
-  `testimonial_datetime` datetime NOT NULL,
-  PRIMARY KEY (`testimonial_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
-
---
--- Dumping data for table `site_testimonial`
---
-
-INSERT INTO `site_testimonial` (`testimonial_id`, `testimonial_name`, `testimonial_content`, `testimonial_is_active`, `testimonial_date`, `testimonial_datetime`) VALUES
-(2, 'Guest', 'Lorem Ipsum adalah contoh teks atau dummy dalam industri percetakan dan penataan huruf atau typesetting. Lorem Ipsum telah menjadi standar contoh teks sejak tahun 1500an, saat seorang tukang cetak yang tidak dikenal mengambil sebuah kumpulan teks dan mengacaknya untuk menjadi sebuah buku contoh huruf. Ia tidak hanya bertahan selama 5 abad, tapi juga telah beralih ke penataan huruf elektronik, tanpa ada perubahan apapun. Ia mulai dipopulerkan pada tahun 1960 dengan diluncurkannya lembaran-lembaran Letraset yang menggunakan kalimat-kalimat dari Lorem Ipsum, dan seiring munculnya perangkat lunak Desktop Publishing seperti Aldus PageMaker juga memiliki versi Lorem Ipsum.', 1, '2013-03-03', '2013-03-16 09:59:23'),
-(3, 'Intan Dwi', 'websitenya bagus banget', 1, '2013-03-03', '2013-03-03 23:49:32');
+(7, 0, NULL, 'home', '<h3><i class="fa fa-check-circle"></i> Cepu Indah Hotel</h3>\r\n&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <p>Located at the heart of Cepu City, Cepu Indah Hotel is Jasmine class hotel with services and facility as a three stars hotel.</p>\r\n<h3><i class="fa fa-pencil"></i> Cepu Indah Hotel</h3>\r\n&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <p>A business &amp; Family style hotel in central Cepu area. A combination of Superior, Deluxe and Standard rooms are arranged in two units hotels, Cepu Indah 1 &amp; Cepu Indah 2. All rooms are providing comfortable, tasteful accommodation overlooking the hotel’s landscaped tropical gardens.</p>\r\n<h3><i class="fa fa-folder-open"></i> Cepu Indah Hotel</h3>\r\n&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <p>Cepu Indah Hotel is just five minutes drive from the train station, centrally surrounded by restaurants, amusement center, and nightlife entertainment.</p>\r\n\r\n', 'user', '1', 1),
+(8, 0, NULL, 'Meeting Facilites', '<p>\r\n\r\n\r\n\r\n\r\n<i></i></p><p class="title"><i>Meeting Room</i></p>\r\n\r\n\r\n\r\n\r\n<br><p>\r\n\r\n\r\n\r\n\r\nYour Wedding, Seminar, Family Gathering or Company Event is our concern too. We provide three types of rooms to meet your purposes.\r\n\r\n\r\n\r\n\r\n</p>\r\n\r\n\r\n\r\n\r\n<center><table border="1">\r\n\r\n\r\n\r\n\r\n<tbody><tr>\r\n\r\n\r\n\r\n\r\n<td width="75px" align="center">Room</td>\r\n\r\n\r\n\r\n\r\n<td width="75px" align="center">Pax</td>\r\n\r\n\r\n\r\n\r\n<td width="100px" align="center">Sound System</td>\r\n\r\n\r\n\r\n\r\n<td width="100px" align="center">LCD Projector</td>\r\n\r\n\r\n\r\n\r\n<td width="100px" align="center">Internet Access</td>\r\n\r\n\r\n\r\n\r\n</tr>\r\n\r\n\r\n\r\n\r\n<tr>\r\n\r\n\r\n\r\n\r\n<td align="center">Anggrek</td>\r\n\r\n\r\n\r\n\r\n<td align="center">30-50</td>\r\n\r\n\r\n\r\n\r\n<td align="center" style="color:green;"><strong>Yes</strong></td>\r\n\r\n\r\n\r\n\r\n<td align="center" style="color:green;"><strong>Yes</strong></td>\r\n\r\n\r\n\r\n\r\n<td align="center" style="color:green;"><strong>Yes</strong></td>\r\n\r\n\r\n\r\n\r\n</tr>\r\n\r\n\r\n\r\n\r\n<tr>\r\n\r\n\r\n\r\n\r\n<td align="center">Teratai</td>\r\n\r\n\r\n\r\n\r\n<td align="center">50-80</td>\r\n\r\n\r\n\r\n\r\n<td align="center" style="color:green;"><strong>Yes</strong></td>\r\n\r\n\r\n\r\n\r\n<td align="center" style="color:green;"><strong>Yes</strong></td>\r\n\r\n\r\n\r\n\r\n<td align="center" style="color:green;"><strong>Yes</strong></td>\r\n\r\n\r\n\r\n\r\n</tr>\r\n\r\n\r\n\r\n\r\n<tr>\r\n\r\n\r\n\r\n\r\n<td align="center">Mawar</td>\r\n\r\n\r\n\r\n\r\n<td align="center">150-200</td>\r\n\r\n\r\n\r\n\r\n<td align="center" style="color:green;"><strong>Yes</strong></td>\r\n\r\n\r\n\r\n\r\n<td align="center" style="color:green;"><strong>Yes</strong></td>\r\n\r\n\r\n\r\n\r\n<td align="center" style="color:green;"><strong>Yes</strong></td>\r\n\r\n\r\n\r\n\r\n</tr>\r\n\r\n\r\n\r\n\r\n</tbody></table><br></center><center><br></center>\r\n\r\n\r\n\r\n\r\n<p><img src="/files/images/meet1.jpg" style="">&nbsp;<img src="/files/images/meet2.jpg" style="">&nbsp;<img src="/files/images/meet3.jpg">&nbsp;<img src="/files/images/meet4.jpg" style=""><br></p>\r\n', 'user', '1', 1),
+(9, 0, NULL, 'Catering', '<p><i><p>Catering Service</p></i><p>Cepu Indah Hotel has given the best service in catering for more than 10 years for many events such as Wedding Ceremony, Seminar, Company Event, and House Party. We have professional staffs with high-qualified foods and five-stars service.</p><p>We provide a complete menu, from local cuisine to international whereas Chinese foods can be found too. Its innovation in combining menu and service will give you a splendid memory for your event.</p><p><strong>For further information please contact +62-296-424040&nbsp;</strong></p><br></p>', 'user', '1', 1),
+(10, 0, NULL, 'Restaurant', '<p><i><p>Cepu Indah Resto</p></i><p>Our restaurant is opened daily for both in-house guest and outside diner. We give you a 24-hours service and convenient dining experiences by providing tasty choices of foods.</p><p>We are open for breakfast from 06:30 a.m. ? 10:30 a.m.</p><br></p>', 'user', '1', 1),
+(11, 0, NULL, 'laundry', '<p><i><p>Laundry Service</p></i><p><strong>For further information, please contact +62-296-424040 and get best served for your need.</strong></p><br></p>', 'user', '1', 1);
 
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `hotel_booking`
+--
+ALTER TABLE `hotel_booking`
+  ADD CONSTRAINT `hotel_booking_ibfk_1` FOREIGN KEY (`hotel_booking_hotel_room_id`) REFERENCES `hotel_room` (`hotel_room_id`) ON DELETE SET NULL ON UPDATE SET NULL;
+
+--
+-- Constraints for table `hotel_room_image`
+--
+ALTER TABLE `hotel_room_image`
+  ADD CONSTRAINT `hotel_room_image_ibfk_1` FOREIGN KEY (`hotel_room_image_hotel_room_id`) REFERENCES `hotel_room` (`hotel_room_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `site_gallery`
