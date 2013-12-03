@@ -17,7 +17,7 @@ $url = Yii::app()->baseUrl;
             <?php foreach ($data as $row): ?>
                 <div class="item<?php echo $i == 1?' active':'';?>">
                     <div class="fill" style="background-image:url('<?php echo $row['gallery_image']; ?>');"></div>
-                    <?php if (isset($row['gallery_title'])): ?>
+                    <?php if (isset($row['gallery_title']) && FALSE): ?>
                         <div class="carousel-caption">
                             <h1><?php echo $row['gallery_title']; ?></h1>
                         </div>
