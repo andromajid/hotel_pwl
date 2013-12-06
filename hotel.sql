@@ -1,17 +1,17 @@
 -- phpMyAdmin SQL Dump
--- version 3.5.8.1deb1
+-- version 4.0.7
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 04, 2013 at 03:25 AM
--- Server version: 5.5.32-0ubuntu0.13.04.1
--- PHP Version: 5.4.9-4ubuntu2.2
+-- Generation Time: Dec 06, 2013 at 11:12 AM
+-- Server version: 5.5.33a-MariaDB
+-- PHP Version: 5.2.17
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 --
--- Database: `hotel`
+-- Database: `andro_cepu`
 --
 
 -- --------------------------------------------------------
@@ -110,7 +110,7 @@ CREATE TABLE IF NOT EXISTS `site_administrator` (
 
 INSERT INTO `site_administrator` (`admin_id`, `admin_group_id`, `admin_username`, `admin_password`, `admin_last_login`, `admin_is_active`) VALUES
 (6, 1, 'bonus1', '827ccb0eea8a706c4c34a16891f84e7b', '2013-03-13 00:35:16', '1'),
-(5, 1, 'admin', '21232f297a57a5a743894a0e4a801fc3', '2013-12-04 01:54:19', '1');
+(5, 1, 'admin', '21232f297a57a5a743894a0e4a801fc3', '2013-12-04 03:33:21', '1');
 
 -- --------------------------------------------------------
 
@@ -428,14 +428,16 @@ CREATE TABLE IF NOT EXISTS `site_gallery` (
   `gallery_is_top` int(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`gallery_id`),
   KEY `gallery_gallery_category_id` (`gallery_gallery_category_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='data gallery' AUTO_INCREMENT=20 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='data gallery' AUTO_INCREMENT=22 ;
 
 --
 -- Dumping data for table `site_gallery`
 --
 
 INSERT INTO `site_gallery` (`gallery_id`, `gallery_gallery_category_id`, `gallery_admin_id`, `gallery_title`, `gallery_content`, `gallery_image`, `gallery_url`, `gallery_is_active`, `gallery_input_datetime`, `gallery_is_top`) VALUES
-(19, 7, 0, 'bg', '<p>test</p>', '/images/gallery/bg.jpg', 'http://', '1', '2013-12-04 02:25:47', 0);
+(19, 7, 0, 'bg', '<p>test</p>', '/images/gallery/bg.jpg', 'http://', '1', '2013-12-04 02:25:47', 0),
+(20, 11, 0, 'room 1', '<p>dadasd</p>', '/images/gallery/rooms1.jpg', 'http://', '1', '2013-12-04 03:37:41', 0),
+(21, 11, 0, 'room2', '<p>sdasdasd</p>', '/images/gallery/rooms2.jpg', 'http://', '1', '2013-12-04 03:38:04', 0);
 
 -- --------------------------------------------------------
 
@@ -459,7 +461,7 @@ CREATE TABLE IF NOT EXISTS `site_gallery_category` (
 
 INSERT INTO `site_gallery_category` (`gallery_category_id`, `gallery_category_title`, `gallery_category_description`, `gallery_category_is_active`, `gallery_category_image`, `gallery_category_is_delete`) VALUES
 (7, 'Slide', NULL, '1', NULL, 1),
-(11, 'Album', NULL, '1', NULL, 1);
+(11, 'Room', NULL, '1', NULL, 1);
 
 -- --------------------------------------------------------
 
